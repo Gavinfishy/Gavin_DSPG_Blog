@@ -1,7 +1,7 @@
 {
-  "hash": "bc7ec2906828c9f7802accd600331627",
+  "hash": "cd9b5d613062e48e5160bddbe2dd57d4",
   "result": {
-    "markdown": "---\ntitle: \"Week One Blog\"\nauthor: \"Gavin Fisher\"\ndate: \"2023-05-23\"\ncategory: \"Week One\"\nimage: profile.jpg\n---\n\n\n# I'm currently hungry.\n\nThis is not a heading\n\n::: {.cell}\n\n```{.r .cell-code}\nprint('Hello work please')\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"Hello work please\"\n```\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nprint('Goodbye')\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(dplyr)\n```\n:::\n",
+    "markdown": "---\ntitle: \"Week One Blog\"\nauthor: \"Gavin Fisher\"\ndate: \"2023-05-23\"\ncategory: \"Week One\"\nimage: 'Gavin profile pic christmas.jpg'\n---\n\n\n# I'm currently hungry.\n\nThis is not a heading\n\n::: {.cell}\n\n```{.r .cell-code}\nprint('Hello work please')\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"Hello work please\"\n```\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nprint('Goodbye')\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(dplyr)\n```\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
