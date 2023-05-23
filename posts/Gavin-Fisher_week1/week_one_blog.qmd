@@ -8,7 +8,19 @@ category: "Week One"
 # I'm currently hungry.
 
 This is not a heading
-```{r}
+```{r, message=TRUE}
 print('Hello')
+```
+
+```{r, eval=FALSE}
+print('Goodbye')
+```
+
+```{r, include=False}
+#I don't want this to come out in the render
+```
+
+```{r, warning=FALSE, message=FALSE}
+library(dplyr)
 ```
 
