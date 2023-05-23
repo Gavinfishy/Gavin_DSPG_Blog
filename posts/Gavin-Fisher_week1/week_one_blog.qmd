@@ -15,64 +15,6 @@ install.packages(c("tidycensus", "tidyverse"))
 install.packages(c("mapview", "plotly", "ggiraph", 
                    "survey", "srvyr"))
 
-library(tidycensus)
-library(tidyverse)
-library(dplyr)
-library(tigris)
-library(sf)
-options(tigris_use_cache = TRUE)
-
-###
-DM_IA_tracts <- map_dfr(c("IA"), ~{
-  tracts(.x, cb = TRUE, year = 2021)
-}) %>%
-  st_transform(8528)  
-
-DM_metro <- core_based_statistical_areas(cb = TRUE, year = 2021) %>%
-  filter(str_detect(NAME, "Des Moines")) %>%
-  st_transform(8528)
-
-ggplot() + 
-  geom_sf(data = DM_IA_tracts, fill = "white", color = "grey") + 
-  geom_sf(data = DM_metro, fill = NA, color = "red") + 
-  theme_void()
-###
-
-###
-get_dm_data <- function(state, place) {
-  tracts_data <- tracts(state, cb = TRUE, year = 2021) %>%
-    filter(NAME == place) %>%
-    st_transform(8528)
-  
-  return(tracts_data)
-}
-
-dm_tracts <- get_dm_data("IA", "Des Moines") %>%
-  select(GEOID)
-
-acs_data <- get_acs(geography = "tract",
-                    variables = c("B01003_001","P1"),
-                    state = "IA",
-                    tract = dm_tracts$GEOID,
-                    survey = "acs5",
-                    year = 2021)
-
-dm_data <- left_join(dm_tracts, acs_data, by = "GEOID")
-###
-
-#select one county
-story_county <- get_acs(
-  geography = 'county',
-  state = 'IA',
-  county = 'Story',
-  variables = "B08511_034",
-  year = 2021,
-  survey = 'acs1' #<<
-)
-
-
-
-
 #iowa pumas
 library(tigris)
 library(mapview)
