@@ -9,7 +9,7 @@ category: "Week One"
 
 This is not a heading
 ```{r, message=TRUE}
-print('Hello')
+print('Hello work please')
 install.packages(c("tidycensus", "tidyverse"))
 
 install.packages(c("mapview", "plotly", "ggiraph", 
