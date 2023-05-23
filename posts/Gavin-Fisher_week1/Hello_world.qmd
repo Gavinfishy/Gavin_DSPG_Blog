@@ -17,7 +17,7 @@ print('Hello work please')
 print('Goodbye')
 ```
 
-```{r, include=False}
+```{r, include=FALSE}
 #I don't want this to come out in the render
 ```
 
