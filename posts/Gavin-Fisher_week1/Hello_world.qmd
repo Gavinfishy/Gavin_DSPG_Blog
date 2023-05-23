@@ -3,7 +3,7 @@ title: "Week One Blog"
 author: "Gavin Fisher"
 date: "2023-05-23"
 category: "Week One"
-image: 'Gavin profile pic christmas.jpg'
+image: 'Iowa_pumas.png'
 ---
 
 # I'm currently hungry.
