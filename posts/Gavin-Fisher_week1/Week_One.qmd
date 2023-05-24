@@ -3,5 +3,15 @@ title: "Week One Blog"
 author: "Gavin Fisher"
 date: "2023-05-23"
 category: "Week One"
+image: 'Datacamp_logo.jpg'
 ---
 # Datacamp
+
+
+![](Datacamp_logo.jpg "Title: datacamp logo"){fig-alt="datacamp logo"}
+
+
+
+Lessons completed: Intro to Deep Learning with Keras, Web Scraping in Python,
+Data Communication Concepts, Image Processing in Python, GitHub Concepts, 
+AI Fundamentals, Introduction to ChatGPT, Introduction to R, Intermediate R.
