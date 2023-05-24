@@ -16,7 +16,7 @@ Lessons completed: Intro to Deep Learning with Keras, Web Scraping in Python,
 Data Communication Concepts, Image Processing in Python, GitHub Concepts, 
 AI Fundamentals, Introduction to ChatGPT, Introduction to R, Intermediate R.
 
-# # # Intro to Deep Learning with Keras
+### Intro to Deep Learning with Keras
 ```{}
 # Import the Sequential model and Dense layer
 from tensorflow.keras.models import Sequential
