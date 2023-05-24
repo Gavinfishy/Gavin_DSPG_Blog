@@ -11,13 +11,20 @@
     "href": "index.html",
     "title": "Gavin_DSPG_Blog",
     "section": "",
-    "text": "Week One Blog\n\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\nNo matching items"
+    "text": "Week One Blog\n\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\n  \n\n\n\n\nWeek Two Blog\n\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/Gavin-Fisher_week1/Hello_world.html",
-    "href": "posts/Gavin-Fisher_week1/Hello_world.html",
+    "objectID": "posts/Gavin-Fisher_week1/Week_One.html",
+    "href": "posts/Gavin-Fisher_week1/Week_One.html",
     "title": "Week One Blog",
     "section": "",
-    "text": "I’m currently hungry.\nThis is not a heading\n\nprint('Hello work please')\n\n[1] \"Hello work please\"\n\n\n\nprint('Goodbye')\n\n\nlibrary(dplyr)"
+    "text": "Datacamp"
+  },
+  {
+    "objectID": "posts/Gavin-Fisher_week2/Week_Two.html",
+    "href": "posts/Gavin-Fisher_week2/Week_Two.html",
+    "title": "Week Two Blog",
+    "section": "",
+    "text": "Tidycensus and this Blog\nlibrary(tigris)\nlibrary(mapview)\noptions(tigris_use_cache = TRUE)\nia_pumas <- pumas(state = \"IA\", cb = TRUE, year = 2019)\nia_puma_map <- mapview(ia_pumas)\n\n\n\n\n\nPumas in Iowa\n\n\nDM_IA_tracts <- map_dfr(c(\"IA\"), ~{\n  tracts(.x, cb = TRUE, year = 2021)\n}) %>%\n  st_transform(8528)  \n\nDM_metro <- core_based_statistical_areas(cb = TRUE, year = 2021) %>%\n  filter(str_detect(NAME, \"Des Moines\")) %>%\n  st_transform(8528)\n\nggplot() + \n  geom_sf(data = DM_IA_tracts, fill = \"white\", color = \"grey\") + \n  geom_sf(data = DM_metro, fill = NA, color = \"red\") + \n  theme_void()\n\n\n\n\n\nOutlined Des Moines metro"
   }
 ]

@@ -1,0 +1,14 @@
+{
+  "hash": "f55fac45ea9f9495311be0ac5f9353c0",
+  "result": {
+    "markdown": "---\ntitle: \"Week Two Blog\"\nauthor: \"Gavin Fisher\"\ndate: \"2023-05-23\"\ncategory: \"Week Two\"\nimage: 'Iowa_pumas.png'\n---\n\n\n# Tidycensus and this Blog.\n\n\n\n![Pumas in Iowa](Iowa_pumas.png \"Title: Pumas in Iowa\"){fig-alt=\"Graph of pumas in Iowa\"}\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tigris)\nlibrary(mapview)\noptions(tigris_use_cache = TRUE)\nia_pumas <- pumas(state = \"IA\", cb = TRUE, year = 2019)\nia_puma_map <- mapview(ia_pumas)\n```\n:::\n\n\n![Outlined Des Moines metro](Des_Moines_metro.png \"Title: Outlined Des Moines Metro\"){fig-alt=\"Graph of Des Moines metro\"}\n\n```{}\nDM_IA_tracts <- map_dfr(c(\"IA\"), ~{\n  tracts(.x, cb = TRUE, year = 2021)\n}) %>%\n  st_transform(8528)  \n\n \n\nDM_metro <- core_based_statistical_areas(cb = TRUE, year = 2021) %>%\n  filter(str_detect(NAME, \"Des Moines\")) %>%\n  st_transform(8528)\n\n \n\nggplot() + \n  geom_sf(data = DM_IA_tracts, fill = \"white\", color = \"grey\") + \n  geom_sf(data = DM_metro, fill = NA, color = \"red\") + \n  theme_void()\n```\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
