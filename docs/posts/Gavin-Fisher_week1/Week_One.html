@@ -233,6 +233,37 @@ show_image(canny_edges, "Edges with Canny")</code></pre>
 <p></p><figcaption class="figure-caption">Grapefruit Edges</figcaption><p></p>
 </figure>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figure class="figure">
+<img src="building.jpg" title="Title: Building" class="img-fluid figure-img" alt="Building image">
+</figure>
+<p></p><figcaption class="figure-caption">Building</figcaption><p></p>
+</figure>
+</div>
+<pre><code># Import the corner detector related functions and module
+from skimage.feature import corner_harris, corner_peaks
+
+# Convert image from RGB-3 to grayscale
+building_image_gray = color.rgb2gray(building_image)
+
+# Apply the detector  to measure the possible corners
+measure_image = corner_harris(building_image_gray)
+
+# Find the peaks of the corners using the Harris detector
+coords = corner_peaks(corner_harris(building_image_gray), min_distance=20, threshold_rel=0.02)
+
+# Show original and resulting image with corners detected
+show_image(building_image, "Original")
+show_image_with_corners(building_image, coords)</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figure class="figure">
+<img src="building_corners.png" title="Title: Building Corners" class="img-fluid figure-img" alt="Building Corners image">
+</figure>
+<p></p><figcaption class="figure-caption">Building Corners</figcaption><p></p>
+</figure>
+</div>
 
 
 </section>
