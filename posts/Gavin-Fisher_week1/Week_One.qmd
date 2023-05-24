@@ -2,7 +2,7 @@
 title: "Week One Blog"
 author: "Gavin Fisher"
 date: "2023-05-23"
-category: "Week One"
+categories: ["Week One"]
 image: 'Datacamp_logo.jpg'
 ---
 # Datacamp
@@ -37,9 +37,45 @@ model.summary()
 
 ![Neural Network](neural_network.png "Title: Neural Network"){fig-alt="Neural Network Graph"}
 
+### Image Proccessing in Python
+
+![Rocket Image](color_rocket.png "Title: Rocket Image"){fig-alt="Image of Rocket"}
+
+```{}
+# Import the modules from skimage
+from skimage import data, color
+
+# Load the rocket image
+rocket = data.rocket()
+
+# Convert the image to grayscale
+gray_scaled_rocket = color.rgb2gray(rocket)
+
+# Show the original image
+show_image(rocket, 'Original RGB image')
+
+# Show the grayscale image
+show_image(gray_scaled_rocket, 'Grayscale image')
+```
+
+![Black and White Rocket](black_rocket.png "Title: Black and White Rocket"){fig-alt="Black and White Rocket Image"}
 
 
+![Grapefruit](grapefruit.jpg "Title: Grapefruit"){fig-alt="Grapefruit image"}
 
+```{}
+# Import the canny edge detector 
+from skimage.feature import canny
 
+# Convert image to grayscale
+grapefruit = color.rgb2gray(grapefruit)
 
+# Apply canny edge detector
+canny_edges = canny(grapefruit)
+
+# Show resulting image
+show_image(canny_edges, "Edges with Canny")
+```
+
+![Grapefruit Edges](grapefruit_edge.png "Title: Grapefruit Edges"){fig-alt="Grapefruit Edges image"}
 

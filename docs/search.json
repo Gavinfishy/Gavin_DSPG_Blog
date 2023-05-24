@@ -11,14 +11,14 @@
     "href": "index.html",
     "title": "Gavin_DSPG_Blog",
     "section": "",
-    "text": "Week One Blog\n\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\n  \n\n\n\n\nWeek Two Blog\n\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\nNo matching items"
+    "text": "Week One Blog\n\n\n\n\n\n\n\nWeek One\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\n  \n\n\n\n\nWeek Two Blog\n\n\n\n\n\n\n\nWeek Two\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/Gavin-Fisher_week1/Week_One.html",
     "href": "posts/Gavin-Fisher_week1/Week_One.html",
     "title": "Week One Blog",
     "section": "",
-    "text": "Datacamp\n\nNine Lessons Completed\nLessons completed: Intro to Deep Learning with Keras, Web Scraping in Python, Data Communication Concepts, Image Processing in Python, GitHub Concepts, AI Fundamentals, Introduction to ChatGPT, Introduction to R, Intermediate R.\n\nIntro to Deep Learning with Keras\n# Import the Sequential model and Dense layer\nfrom tensorflow.keras.models import Sequential\nfrom tensorflow.keras.layers import Dense\n\n# Create a Sequential model\nmodel = Sequential()\n\n# Add an input layer and a hidden layer with 10 neurons\nmodel.add(Dense(10, input_shape=(2,), activation=\"relu\"))\n\n# Add a 1-neuron output layer\nmodel.add(Dense(1))\n\n# Summarise your model\nmodel.summary()\n\n\n\n\n\nNeural Network"
+    "text": "Datacamp\n\nNine Lessons Completed\nLessons completed: Intro to Deep Learning with Keras, Web Scraping in Python, Data Communication Concepts, Image Processing in Python, GitHub Concepts, AI Fundamentals, Introduction to ChatGPT, Introduction to R, Intermediate R.\n\nIntro to Deep Learning with Keras\n# Import the Sequential model and Dense layer\nfrom tensorflow.keras.models import Sequential\nfrom tensorflow.keras.layers import Dense\n\n# Create a Sequential model\nmodel = Sequential()\n\n# Add an input layer and a hidden layer with 10 neurons\nmodel.add(Dense(10, input_shape=(2,), activation=\"relu\"))\n\n# Add a 1-neuron output layer\nmodel.add(Dense(1))\n\n# Summarise your model\nmodel.summary()\n\n\n\n\n\nNeural Network\n\n\n\n\nImage Proccessing in Python\n\n\n\n\n\nRocket Image\n\n\n# Import the modules from skimage\nfrom skimage import data, color\n\n# Load the rocket image\nrocket = data.rocket()\n\n# Convert the image to grayscale\ngray_scaled_rocket = color.rgb2gray(rocket)\n\n# Show the original image\nshow_image(rocket, 'Original RGB image')\n\n# Show the grayscale image\nshow_image(gray_scaled_rocket, 'Grayscale image')\n\n\n\n\n\nBlack and White Rocket\n\n\n\n\n\n\n\nGrapefruit\n\n\n# Import the canny edge detector \nfrom skimage.feature import canny\n\n# Convert image to grayscale\ngrapefruit = color.rgb2gray(grapefruit)\n\n# Apply canny edge detector\ncanny_edges = canny(grapefruit)\n\n# Show resulting image\nshow_image(canny_edges, \"Edges with Canny\")\n\n\n\n\n\nGrapefruit Edges"
   },
   {
     "objectID": "posts/Gavin-Fisher_week2/Week_Two.html",

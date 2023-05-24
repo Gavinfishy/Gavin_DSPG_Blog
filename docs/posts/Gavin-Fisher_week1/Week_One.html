@@ -106,7 +106,10 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Week One Blog</h1>
-                      </div>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Week One</div>
+              </div>
+                  </div>
   </div>
     
   
@@ -168,6 +171,66 @@ model.summary()</code></pre>
 <img src="neural_network.png" title="Title: Neural Network" class="img-fluid figure-img" alt="Neural Network Graph">
 </figure>
 <p></p><figcaption class="figure-caption">Neural Network</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="image-proccessing-in-python" class="level3">
+<h3 class="anchored" data-anchor-id="image-proccessing-in-python">Image Proccessing in Python</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figure class="figure">
+<img src="color_rocket.png" title="Title: Rocket Image" class="img-fluid figure-img" alt="Image of Rocket">
+</figure>
+<p></p><figcaption class="figure-caption">Rocket Image</figcaption><p></p>
+</figure>
+</div>
+<pre><code># Import the modules from skimage
+from skimage import data, color
+
+# Load the rocket image
+rocket = data.rocket()
+
+# Convert the image to grayscale
+gray_scaled_rocket = color.rgb2gray(rocket)
+
+# Show the original image
+show_image(rocket, 'Original RGB image')
+
+# Show the grayscale image
+show_image(gray_scaled_rocket, 'Grayscale image')</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figure class="figure">
+<img src="black_rocket.png" title="Title: Black and White Rocket" class="img-fluid figure-img" alt="Black and White Rocket Image">
+</figure>
+<p></p><figcaption class="figure-caption">Black and White Rocket</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figure class="figure">
+<img src="grapefruit.jpg" title="Title: Grapefruit" class="img-fluid figure-img" alt="Grapefruit image">
+</figure>
+<p></p><figcaption class="figure-caption">Grapefruit</figcaption><p></p>
+</figure>
+</div>
+<pre><code># Import the canny edge detector 
+from skimage.feature import canny
+
+# Convert image to grayscale
+grapefruit = color.rgb2gray(grapefruit)
+
+# Apply canny edge detector
+canny_edges = canny(grapefruit)
+
+# Show resulting image
+show_image(canny_edges, "Edges with Canny")</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figure class="figure">
+<img src="grapefruit_edge.png" title="Title: Grapefruit Edges" class="img-fluid figure-img" alt="Grapefruit Edges image">
+</figure>
+<p></p><figcaption class="figure-caption">Grapefruit Edges</figcaption><p></p>
 </figure>
 </div>
 
