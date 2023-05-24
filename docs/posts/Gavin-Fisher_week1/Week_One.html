@@ -143,7 +143,34 @@ ul.task-list li input[type="checkbox"] {
 <section id="datacamp" class="level1">
 <h1>Datacamp</h1>
 <p><img src="Datacamp_logo.jpg" title="Title: datacamp logo" class="img-fluid" alt="datacamp logo"></p>
+<p>Nine Lessons Completed</p>
 <p>Lessons completed: Intro to Deep Learning with Keras, Web Scraping in Python, Data Communication Concepts, Image Processing in Python, GitHub Concepts, AI Fundamentals, Introduction to ChatGPT, Introduction to R, Intermediate R.</p>
+</section>
+<section id="intro-to-deep-learning-with-keras" class="level1">
+<h1># # Intro to Deep Learning with Keras</h1>
+<pre><code># Import the Sequential model and Dense layer
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+# Create a Sequential model
+model = Sequential()
+
+# Add an input layer and a hidden layer with 10 neurons
+model.add(Dense(10, input_shape=(2,), activation="relu"))
+
+# Add a 1-neuron output layer
+model.add(Dense(1))
+
+# Summarise your model
+model.summary()</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figure class="figure">
+<img src="neural_network.png" title="Title: Neural Network" class="img-fluid figure-img" alt="Neural Network Graph">
+</figure>
+<p></p><figcaption class="figure-caption">Neural Network</figcaption><p></p>
+</figure>
+</div>
 
 
 </section>

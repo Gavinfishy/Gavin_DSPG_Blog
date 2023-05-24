@@ -10,8 +10,36 @@ image: 'Datacamp_logo.jpg'
 
 ![](Datacamp_logo.jpg "Title: datacamp logo"){fig-alt="datacamp logo"}
 
-
+Nine Lessons Completed
 
 Lessons completed: Intro to Deep Learning with Keras, Web Scraping in Python,
 Data Communication Concepts, Image Processing in Python, GitHub Concepts, 
 AI Fundamentals, Introduction to ChatGPT, Introduction to R, Intermediate R.
+
+# # # Intro to Deep Learning with Keras
+```{}
+# Import the Sequential model and Dense layer
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+# Create a Sequential model
+model = Sequential()
+
+# Add an input layer and a hidden layer with 10 neurons
+model.add(Dense(10, input_shape=(2,), activation="relu"))
+
+# Add a 1-neuron output layer
+model.add(Dense(1))
+
+# Summarise your model
+model.summary()
+```
+
+![Neural Network](neural_network.png "Title: Neural Network"){fig-alt="Neural Network Graph"}
+
+
+
+
+
+
+
