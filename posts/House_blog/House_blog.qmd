@@ -1,0 +1,65 @@
+---
+title: "Housing Team Recap Week Two"
+date: "2023-05-25"
+categories: ["Week Two", "Housing Team"]
+---
+
+## Project Milestones
+
+Project is more planned out
+
+Personal and team Blogs are mostly created
+
+Half of backup data is uploaded to GitHub
+
+## Happies
+
+We are in the lead for team datacamp points at about 90k total
+
+Blogs:
+
+https://1angelinaevans.github.io/AngelinaEvansBlog/
+
+https://gavinfishy.github.io/Gavin_DSPG_Blog/
+
+## Crappies
+
+The Blogs are difficult to work with and get set up
+
+## Cool Technical Things We Learned This Week
+
+How to created webpages in R studio
+
+More basics in R such as making matrices
+
+How to use Tidycensus for importing variable codes
+
+Practice with GitHub
+
+## Tidycensus Graphs
+
+## Random Facts for Chris
+
+From statistic brain research institute, “…in an average hour, there are over 61,000 Americans airborne over the United States.”
+
+Every second, 75 McDonalds burgers are eaten
+
+In 1890, the Hollerith Machine was used to tabulate Census data. Technically, this could be called the first computer device.
+
+
+## Questions/ Discussion
+
+Unrelated from work - what do people do here during the summer?
+
+
+
+
+
+
+
+
+
+
+
+
+
