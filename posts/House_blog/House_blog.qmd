@@ -6,21 +6,23 @@ categories: ["Week Two", "Housing Team"]
 
 ## Project Milestones
 
-Project is more planned out
+-   Project is more planned out
 
-Personal and team Blogs are mostly created
+-   Personal and team Blogs are mostly created
 
-Half of backup data is uploaded to GitHub
+-   Half of backup data is uploaded to GitHub
 
 ## Happies
 
-We are in the lead for team datacamp points at about 90k total
+We are in the lead for [team]{.underline} datacamp points at about 90k total
 
 Blogs:
 
-https://1angelinaevans.github.io/AngelinaEvansBlog/
+[Angelina](https://1angelinaevans.github.io/AngelinaEvansBlog/)
 
-https://gavinfishy.github.io/Gavin_DSPG_Blog/
+[Gavin](https://gavinfishy.github.io/Gavin_DSPG_Blog/)
+
+[Kailyn]{.underline}
 
 ## Crappies
 
@@ -32,34 +34,36 @@ How to created webpages in R studio
 
 More basics in R such as making matrices
 
+![Matrices](matrix.png "Title: Matrices"){fig-alt="Matrices code"}
+
 How to use Tidycensus for importing variable codes
+
+![Variable Loading](load_var.png "Title: Variable Loading"){fig-alt="Variable Loading Code"}
 
 Practice with GitHub
 
 ## Tidycensus Graphs
 
+![](pop_ind.jpg "Title: Population"){fig-alt="Population"}
+
+![](puma.jpg "Title: Pumas"){fig-alt="Pumas"}
+
+![](med_age.png "Title: Median Age"){fig-alt="Median Age"}
+
+![](med_income.png "Title: Median Income"){fig-alt="Median Income"}
+
+![](percent_unemploy.png "Title: Unemployed"){fig-alt="Unemployed"}
+
+![](des_moines_metro.jpg "Title: Metro circle"){fig-alt="Metro Circle"}
+
 ## Random Facts for Chris
 
-From statistic brain research institute, “…in an average hour, there are over 61,000 Americans airborne over the United States.”
+From statistic brain research institute, "...in an average hour, there are over 61,000 Americans airborne over the United States."
 
 Every second, 75 McDonalds burgers are eaten
 
 In 1890, the Hollerith Machine was used to tabulate Census data. Technically, this could be called the first computer device.
 
-
 ## Questions/ Discussion
 
 Unrelated from work - what do people do here during the summer?
-
-
-
-
-
-
-
-
-
-
-
-
-
