@@ -1,5 +1,6 @@
 ---
 title: "Housing Team Recap Week Two"
+author: "Gavin Fisher"
 date: "2023-05-25"
 categories: ["Week Two", "Housing Team"]
 ---
@@ -44,17 +45,17 @@ Practice with GitHub
 
 ## Tidycensus Graphs
 
-![](pop_ind.jpg "Title: Population"){fig-alt="Population"}
+![Kailyn](pop_ind.jpg "Title: Population"){fig-alt="Population"}
 
-![](puma.jpg "Title: Pumas"){fig-alt="Pumas"}
+![Gavin](puma.jpg "Title: Pumas"){fig-alt="Pumas"}
 
-![](med_age.png "Title: Median Age"){fig-alt="Median Age"}
+![Kailyn](med_age.png "Title: Median Age"){fig-alt="Median Age"}
 
-![](med_income.png "Title: Median Income"){fig-alt="Median Income"}
+![Angelina](med_income.png "Title: Median Income"){fig-alt="Median Income"}
 
-![](percent_unemploy.png "Title: Unemployed"){fig-alt="Unemployed"}
+![Kailyn](percent_unemploy.png "Title: Unemployed"){fig-alt="Unemployed"}
 
-![](des_moines_metro.jpg "Title: Metro circle"){fig-alt="Metro Circle"}
+![Gavin](des_moines_metro.jpg "Title: Metro circle"){fig-alt="Metro Circle"}
 
 ## Random Facts for Chris
 
