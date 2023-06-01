@@ -1,8 +1,21 @@
 ---
-title: "Week Two Blog"
+title: "Week Three Blog"
 author: "Gavin Fisher"
 date: "2023-06-01"
-categories: ["Week Three"]
+categories: ["Week Three", "AI Models"]
 ---
 
-#AI Model, Project Plan, and Review of Websites to be Scraped
+# AI Model, Project Plan, and Review of Websites to be Scraped
+
+During this week a base AI model was made that can evaluate whether houses have vegetation in front of the property or not.This model evaluates two inputs of image folders or labels. This binary model can be reused later on the AI housing project and expanded to accomplish more complex tasks.
+
+
+Next a rough draft of our project plan was created using visio. This was created to make a neat and more visual representation of the AI housing project path.
+
+
+![Housing AI Project Plan](DSPG project plan updated 2.pdf "Housing AI Project Plan"){fig-alt=" visual Housing AI Project Plan"}
+
+
+
+
+
