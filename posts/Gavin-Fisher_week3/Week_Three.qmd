@@ -13,7 +13,7 @@ During this week a base AI model was made that can evaluate whether houses have 
 Next a rough draft of our project plan was created using visio. This was created to make a neat and more visual representation of the AI housing project path.
 
 
-![Housing AI Project Plan](DSPG project plan updated 2.pdf "Housing AI Project Plan"){fig-alt=" visual Housing AI Project Plan"}
+![Housing AI Project Plan](DSPG_project_plan.png "Housing AI Project Plan"){fig-alt=" visual Housing AI Project Plan"}
 
 
 
