@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Gavin_DSPG_Blog",
     "section": "",
-    "text": "Housing Team Recap Week Two\n\n\n\n\n\n\n\nWeek Two\n\n\nHousing Team\n\n\n\n\n\n\n\n\n\n\n\nMay 25, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\n  \n\n\n\n\nWeek One Blog\n\n\n\n\n\n\n\nWeek One\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\n  \n\n\n\n\nWeek Two Blog\n\n\n\n\n\n\n\nWeek Two\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\nNo matching items"
+    "text": "Housing Team Recap Week Two\n\n\n\n\n\n\n\nWeek Two\n\n\nHousing Team\n\n\n\n\n\n\n\n\n\n\n\nMay 25, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\n  \n\n\n\n\nWeek One Blog\n\n\n\n\n\n\n\nWeek One\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\n  \n\n\n\n\nWeek Two Blog\n\n\n\n\n\n\n\nWeek Two\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\n  \n\n\n\n\nWeek Two Blog\n\n\n\n\n\n\n\nWeek Two\n\n\n\n\n\n\n\n\n\n\n\nMay 23, 2023\n\n\nGavin Fisher\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/Gavin-Fisher_week1/Week_One.html",
@@ -26,6 +26,13 @@
     "title": "Week Two Blog",
     "section": "",
     "text": "Tidycensus and this Blog\nlibrary(tigris)\nlibrary(mapview)\noptions(tigris_use_cache = TRUE)\nia_pumas <- pumas(state = \"IA\", cb = TRUE, year = 2019)\nia_puma_map <- mapview(ia_pumas)\n\n\n\n\n\nPumas in Iowa\n\n\nDM_IA_tracts <- map_dfr(c(\"IA\"), ~{\n  tracts(.x, cb = TRUE, year = 2021)\n}) %>%\n  st_transform(8528)  \n\nDM_metro <- core_based_statistical_areas(cb = TRUE, year = 2021) %>%\n  filter(str_detect(NAME, \"Des Moines\")) %>%\n  st_transform(8528)\n\nggplot() + \n  geom_sf(data = DM_IA_tracts, fill = \"white\", color = \"grey\") + \n  geom_sf(data = DM_metro, fill = NA, color = \"red\") + \n  theme_void()\n\n\n\n\n\nOutlined Des Moines metro"
+  },
+  {
+    "objectID": "posts/Gavin-Fisher_week3/Week_Three.html",
+    "href": "posts/Gavin-Fisher_week3/Week_Three.html",
+    "title": "Week Two Blog",
+    "section": "",
+    "text": "#AI Model, Project Plan, and Review of Websites to be Scraped"
   },
   {
     "objectID": "posts/House_blog/House_blog.html",
