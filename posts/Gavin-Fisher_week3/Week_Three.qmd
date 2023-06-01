@@ -9,7 +9,31 @@ categories: ["Week Three", "AI Models"]
 
 During this week a base AI model was made that can evaluate whether houses have vegetation in front of the property or not.This model evaluates two inputs of image folders or labels. This binary model can be reused later on the AI housing project and expanded to accomplish more complex tasks.
 
-![](DSPG_project_plan.png "AI code")
+![](AI_1.png "AI code")
+
+![](AI_2.png "AI code")
+
+![](AI_3.png "AI code")
+
+![](AI_45.png "AI code")
+
+![](AI_6.png "AI code")
+
+![](AI_62.png "AI code")
+
+![](AI_7.png "AI code")
+
+![](AI_8.png "AI code")
+
+![](AI_82.png "AI code")
+
+![](AI_9.png "AI code")
+
+![](AI_10.png "AI code")
+
+![](AI_102.png "AI code")
+
+![](AI_11.png "AI code")
 
 Next a rough draft of our project plan was created using visio. This was created to make a neat and more visual representation of the AI housing project path.
 
