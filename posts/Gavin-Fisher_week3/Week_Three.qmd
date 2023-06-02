@@ -4,6 +4,7 @@ author: "Gavin Fisher"
 date: "2023-06-01"
 categories: ["Week Three", "AI Models"]
 image: "AI_main.png"
+theme: "cosmo"
 ---
 
 ## AI Model, Project Plan, and Review of Websites to be Scraped
