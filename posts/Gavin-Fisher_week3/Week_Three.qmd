@@ -3,11 +3,12 @@ title: "Week Three Blog"
 author: "Gavin Fisher"
 date: "2023-06-01"
 categories: ["Week Three", "AI Models"]
+image: "AI_main.png"
 ---
 
 ## AI Model, Project Plan, and Review of Websites to be Scraped
 
-During this week a base AI model was made that can evaluate whether houses have vegetation in front of the property or not.This model evaluates two inputs of image folders or labels. This binary model can be reused later on the AI housing project and expanded to accomplish more complex tasks.
+During this week a base AI model was made that can evaluate whether houses have vegetation in front of the property or not.This model evaluates two inputs of image folders or labels using just under 400 images in each category. This binary model can be reused later on the AI housing project and expanded to accomplish more complex tasks.
 
 ![](AI_1.png "AI code")
 
@@ -38,3 +39,12 @@ During this week a base AI model was made that can evaluate whether houses have 
 Next a rough draft of our project plan was created using visio. This was created to make a neat and more visual representation of the AI housing project path.
 
 ![Housing AI Project Plan](DSPG_project_plan.png "Housing AI Project Plan")
+
+
+Finally, we looked further into what can be scraped off of Vanguard, Beacon, Trulia, and from the Google Maps API. 
+
+
+
+
+
+
