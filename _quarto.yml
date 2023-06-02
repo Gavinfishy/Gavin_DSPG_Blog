@@ -12,7 +12,7 @@ website:
         href: https://github.com/Gavinfishy
 format:
   html:
-    theme: Quartz
+    theme: sandstone
     css: styles.css
 
 editor: visual
