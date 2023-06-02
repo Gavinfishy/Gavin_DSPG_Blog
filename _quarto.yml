@@ -12,7 +12,7 @@ website:
         href: https://github.com/Gavinfishy
 format:
   html:
-    theme: cosmo
+    theme: simplex
     css: styles.css
 
 editor: visual
