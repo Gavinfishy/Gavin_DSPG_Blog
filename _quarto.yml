@@ -12,9 +12,10 @@ website:
         href: https://github.com/Gavinfishy
 format:
   html:
-    theme: sandstone
+    theme: [simplex, theme-simplex.scss]
     backgroundcolor: "#CAC7A7"
     css: styles.css
+    toc: true
 
 editor: visual
 
