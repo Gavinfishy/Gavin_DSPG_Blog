@@ -13,7 +13,6 @@ website:
 format:
   html:
     theme: [simplex, theme-simplex.scss]
-    backgroundcolor: "#CAC7A7"
     css: styles.css
     toc: true
 
