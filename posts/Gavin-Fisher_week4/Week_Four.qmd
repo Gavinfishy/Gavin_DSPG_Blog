@@ -1,0 +1,32 @@
+---
+title: "Week Four Blog"
+author: "Gavin Fisher"
+date: "2023-06-08"
+categories: ["Week Four"]
+---
+
+## Address collection, Webscraping Zillow, Webscraping google maps api
+
+This week the housing team focused pretty heavily on figuring out how to web scrape. The beginning of the week consisted of collecting addresses from Beacon and Vanguard by using the parcel map selection features and scraping the data. I found a chrome extension simply named instant data scraper but unfortunately you cannot change the data to scrape very easily or alter how the data is inputed.
+
+![](Beacon.png "Beacon Pic")
+
+With this tool Grundy Center, New Hampton, and Slater were all easily downloadable into csv files (Grundy Center and New Hampton had to be sliced into for csv's then merged due to limits of beacons select feature). It was somewhat of a pain cleaning this data we collected because parcel number, address, and other info were placed into a single excel box with hidden newline characters. We used the following excel functions to parse through the data and collect addresses and form the google api links with them.
+
+=TRIM(CLEAN(SUBSTITUTE(A1,CHAR(160)," "))), =SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(A1, " ", "+"), CHAR(9), "+"), CHAR(10), "+") replaces all whitespace with a plus (helpful for manipulating addresses quickly), this following function filtered out the few roads that google maps has images of the road for. =FILTER(G:G, (ISNUMBER(SEARCH("W+MAIN+ST", G:G))) + (ISNUMBER(SEARCH("N+BROADWAY+AVE",G:G))) + (ISNUMBER(SEARCH("W+PROSPECT+ST",G:G))) + (ISNUMBER(SEARCH("N+LINN+AVE",G:G))) + (ISNUMBER(SEARCH("E+MAIN+ST",G:G))) + (ISNUMBER(SEARCH("N+LOCUST+AVE",G:G))) + (ISNUMBER(SEARCH("W+MILWAUKEE+ST",G:G))) + (ISNUMBER(SEARCH("N+PLEASANT+HILL+AVE",G:G))) + (ISNUMBER(SEARCH("S+LINN+AVE",G:G))))
+
+![](Hampton.png "New Hampton Google maps")
+As you can see above Google street view has very limited data in New Hampton which is why the url's we gathered for New Hampton had to be reduced. The interstate images are from 2018 while the images from the main road in the town is from 2009 and you can tell it gives you early 2000's images vibes
+![](streetview.png "2009 Google Streetview")
+
+We collected all the raw data last Friday right before the end of the day but cleaned the data this last Monday. The next few days we tried to scrape data from Zillow(no longer trulia because we realized Zillow owns trulia as of 2015?) but some interesting things we found is that you can look at houses not for sale and get google images of those houses and estimates of the house worth. You can scrape data for houses that were recently sold and on sale currently for pictures unique from google maps images. Finally we had a breakthrough on how to collect Zillow data using R and some elbow grease.
+
+![](zillowimage.png "zillow download")
+
+I was able to figure out how to scrape house addresses and image urls. I was then able to go to those image links, download the image, name it with the address, then export to a new folder. What other members of housing team did with this breakthrough after we hit a web scraping wall is investigate other items we could scrape such as amount of floors and cost which will be helpful for analyses of these cities.
+
+The last accomplishment of this week was we now also have a program in R to compile image url's for the google api using the addresses we found earlier this week. Example url: https://maps.googleapis.com/maps/api/streetview?size=800x800&location=1009+REDBUD+DR,+SLATER+IOWA$key=(Google maps API key goes here)
+
+![](googleapi.png "google images")
+
+This is a screenshot after I downloaded every Slater house we had a link to. We need to make a naming convention for the images we pull from google and other sources to not only keep track of the images easily but also to make it easy for humans to decipher where an image is from (not just a number).
