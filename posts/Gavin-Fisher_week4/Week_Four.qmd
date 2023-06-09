@@ -2,7 +2,7 @@
 title: "Week Four Blog"
 author: "Gavin Fisher"
 date: "2023-06-08"
-categories: ["Week Four"]
+categories: ["Week Four", "Web Scraping"]
 ---
 
 ## Address collection, Webscraping Zillow, Webscraping google maps api
@@ -30,3 +30,15 @@ The last accomplishment of this week was we now also have a program in R to comp
 ![](googleapi.png "google images")
 
 This is a screenshot after I downloaded every Slater house we had a link to. We need to make a naming convention for the images we pull from google and other sources to not only keep track of the images easily but also to make it easy for humans to decipher where an image is from (not just a number).
+
+Finally I made a little diagram to plan out what the algorithm will do that we are trying to build utilizing the AI models we plan to make (hopefully next week we can start cranking some out)
+
+
+![](Endgame model code plan.png "google images")
+
+
+
+
+
+
+
