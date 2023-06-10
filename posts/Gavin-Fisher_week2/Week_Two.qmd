@@ -10,7 +10,7 @@ image: 'Iowa_pumas.png'
 
 We watched videos learning about the basics of Tidycensus from the developer of the package. It taught basic map creation and general use of the application [link to video](https://www.youtube.com/watch?v=1WKAeM8yR-0&ab_channel=SSDAN) I made one of the graphics from the video and one from his textbook online (I excluded the images made with the walk through). This blog was also created during the second week. Otherwise we started to look into our project.
 
-```
+```         
 library(tigris)
 library(mapview)
 options(tigris_use_cache = TRUE)
@@ -20,7 +20,7 @@ ia_puma_map <- mapview(ia_pumas)
 
 ![Pumas in Iowa](Iowa_pumas.png "Title: Pumas in Iowa"){fig-alt="Graph of pumas in Iowa"}
 
-```
+```         
 DM_IA_tracts <- map_dfr(c("IA"), ~{
   tracts(.x, cb = TRUE, year = 2021)
 }) %>%

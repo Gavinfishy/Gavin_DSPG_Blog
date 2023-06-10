@@ -2,7 +2,7 @@
 title: "Week One Blog"
 author: "Gavin Fisher"
 date: "2023-05-22"
-categories: ["Week One"]
+categories: ["Week One", "Python", "R"]
 image: 'Datacamp_logo.jpg'
 ---
 
@@ -14,7 +14,7 @@ Nine Lessons Completed: Intro to Deep Learning with Keras, Web Scraping in Pytho
 
 ### Intro to Deep Learning with Keras
 
-```    
+```         
 # Import the Sequential model and Dense layer
 import tensorflow
 from tensorflow.keras.models import Sequential

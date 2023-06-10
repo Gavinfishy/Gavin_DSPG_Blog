@@ -2,7 +2,7 @@
 title: "Housing Team Recap Week Two"
 author: "Gavin Fisher"
 date: "2023-05-25"
-categories: ["Week Two", "Housing Team"]
+categories: ["Week Two", "Housing Team", "R"]
 ---
 
 ## Project Milestones

@@ -2,7 +2,7 @@
 title: "Week Five Blog"
 author: "Gavin Fisher"
 date: "2023-06-15"
-categories: ["Week Five", "AI Models"]
+categories: ["Week Five", "AI Models", "Python"]
 ---
 
 ## Created Skeleton code for the AI Models algorithm

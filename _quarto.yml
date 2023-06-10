@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
 website:
-  title: "Gavin's DSPG Blog"
+  title: "Home"
   navbar:
     background: '#C8102E'
     right:
