@@ -4,7 +4,7 @@ project:
 website:
   title: "Gavin's DSPG Blog"
   navbar:
-    color: '#C8102E'
+    background: '#C8102E'
     right:
       - about.qmd
       - icon: linkedin
