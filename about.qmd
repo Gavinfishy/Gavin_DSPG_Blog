@@ -11,9 +11,7 @@ about:
       text: Github
       href: https://github.com/Gavinfishy
       
-    - icon: gmail
-      text: Gmail
-      href: fishergavind@gmail.com
+  
 ---
 
 
