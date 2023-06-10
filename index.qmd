@@ -1,5 +1,5 @@
 ---
-title: "Gavin's DSPG Blog"
+title: "Home"
 listing:
   contents: posts
   sort: "date desc"
