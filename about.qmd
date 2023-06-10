@@ -10,9 +10,12 @@ about:
     - icon: github
       text: Github
       href: https://github.com/Gavinfishy
+      
+    - icon: gmail
+      text: Gmail
+      href: fishergavind@gmail.com
 ---
 
-About this blog:
 
 This blog's purpose is to keep track of code done during Gavin D Fisher's time at Iowa State's Data Science for the Public Good program.
 
@@ -22,4 +25,4 @@ Undergrads: [Angelina](https://1angelinaevans.github.io/AngelinaEvansBlog/), [Ka
 
 Team leads: Morenike, Sadat
 
-DSPG Blog
+[DSPG Blog](https://dspg-2023.github.io/DSPG2023/)
