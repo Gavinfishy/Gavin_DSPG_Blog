@@ -10,11 +10,26 @@ website:
         href: https://www.linkedin.com/in/gavin-fisher-0b3088238/
       - icon: github
         href: https://github.com/Gavinfishy
+#format:
+#  html:
+#    theme: [sandstone]
+#    backgroundcolor: "#CAC7A7"
+#    css: styles.css
+
+#editor: visual
+
+
+
 format:
   html:
-    theme: [sandstone]
     backgroundcolor: "#CAC7A7"
+    linkcolor: "#524727"
+    
     css: styles.css
 
 editor: visual
+
+
+
+
 

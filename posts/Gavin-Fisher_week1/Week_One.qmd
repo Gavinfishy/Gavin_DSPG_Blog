@@ -1,24 +1,22 @@
 ---
 title: "Week One Blog"
 author: "Gavin Fisher"
-date: "2023-05-23"
+date: "2023-05-22"
 categories: ["Week One"]
 image: 'Datacamp_logo.jpg'
 ---
-# Datacamp
 
+# Datacamp
 
 ![](Datacamp_logo.jpg "Title: datacamp logo"){fig-alt="datacamp logo"}
 
-Nine Lessons Completed
-
-Lessons completed: Intro to Deep Learning with Keras, Web Scraping in Python,
-Data Communication Concepts, Image Processing in Python, GitHub Concepts, 
-AI Fundamentals, Introduction to ChatGPT, Introduction to R, Intermediate R.
+Nine Lessons Completed: Intro to Deep Learning with Keras, Web Scraping in Python, Data Communication Concepts, Image Processing in Python, GitHub Concepts, AI Fundamentals, Introduction to ChatGPT, Introduction to R, Intermediate R. Below are a few examples of what I thought was cool in these lessons. Obviously too much content was covered to display here.
 
 ### Intro to Deep Learning with Keras
-```{}
+
+```    
 # Import the Sequential model and Dense layer
+import tensorflow
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
@@ -41,7 +39,7 @@ model.summary()
 
 ![Rocket Image](color_rocket.png "Title: Rocket Image"){fig-alt="Image of Rocket"}
 
-```{}
+```         
 # Import the modules from skimage
 from skimage import data, color
 
@@ -60,10 +58,9 @@ show_image(gray_scaled_rocket, 'Grayscale image')
 
 ![Black and White Rocket](black_rocket.png "Title: Black and White Rocket"){fig-alt="Black and White Rocket Image"}
 
-
 ![Grapefruit](grapefruit.jpg "Title: Grapefruit"){fig-alt="Grapefruit image"}
 
-```{}
+```         
 # Import the canny edge detector 
 from skimage.feature import canny
 
@@ -79,10 +76,9 @@ show_image(canny_edges, "Edges with Canny")
 
 ![Grapefruit Edges](grapefruit_edge.png "Title: Grapefruit Edges"){fig-alt="Grapefruit Edges image"}
 
-
 ![Building](building.jpg "Title: Building"){fig-alt="Building image"}
 
-```{}
+```         
 # Import the corner detector related functions and module
 from skimage.feature import corner_harris, corner_peaks
 
@@ -101,7 +97,3 @@ show_image_with_corners(building_image, coords)
 ```
 
 ![Building Corners](building_corners.png "Title: Building Corners"){fig-alt="Building Corners image"}
-
-
-
-

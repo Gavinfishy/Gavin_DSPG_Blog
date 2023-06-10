@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gavin Fisher">
-<meta name="dcterms.date" content="2023-05-23">
+<meta name="dcterms.date" content="2023-06-15">
 
-<title>Gavin_DSPG_Blog - Week Two Blog</title>
+<title>Gavin_DSPG_Blog - Week Five Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,9 +105,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Week Two Blog</h1>
+      <h1 class="title">Week Five Blog</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Week Two</div>
+                <div class="quarto-category">Week Five</div>
+                <div class="quarto-category">AI Models</div>
               </div>
                   </div>
   </div>
@@ -125,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 23, 2023</p>
+        <p class="date">June 15, 2023</p>
       </div>
     </div>
     
@@ -143,43 +144,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="tidycensus-and-this-blog" class="level1">
-<h1>Tidycensus and this Blog</h1>
-<p>We watched videos learning about the basics of Tidycensus from the developer of the package. It taught basic map creation and general use of the application <a href="https://www.youtube.com/watch?v=1WKAeM8yR-0&amp;ab_channel=SSDAN">link to video</a> I made one of the graphics from the video and one from his textbook online (I excluded the images made with the walk through). This blog was also created during the second week. Otherwise we started to look into our project.</p>
-<pre><code>library(tigris)
-library(mapview)
-options(tigris_use_cache = TRUE)
-ia_pumas &lt;- pumas(state = "IA", cb = TRUE, year = 2019)
-ia_puma_map &lt;- mapview(ia_pumas)</code></pre>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figure class="figure">
-<img src="Iowa_pumas.png" title="Title: Pumas in Iowa" class="img-fluid figure-img" alt="Graph of pumas in Iowa">
-</figure>
-<p></p><figcaption class="figure-caption">Pumas in Iowa</figcaption><p></p>
-</figure>
-</div>
-<pre><code>DM_IA_tracts &lt;- map_dfr(c("IA"), ~{
-  tracts(.x, cb = TRUE, year = 2021)
-}) %&gt;%
-  st_transform(8528)  
-
-DM_metro &lt;- core_based_statistical_areas(cb = TRUE, year = 2021) %&gt;%
-  filter(str_detect(NAME, "Des Moines")) %&gt;%
-  st_transform(8528)
-
-ggplot() + 
-  geom_sf(data = DM_IA_tracts, fill = "white", color = "grey") + 
-  geom_sf(data = DM_metro, fill = NA, color = "red") + 
-  theme_void()</code></pre>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figure class="figure">
-<img src="Des_Moines_metro.png" title="Title: Outlined Des Moines Metro" class="img-fluid figure-img" alt="Graph of Des Moines metro">
-</figure>
-<p></p><figcaption class="figure-caption">Outlined Des Moines metro</figcaption><p></p>
-</figure>
-</div>
+<section id="created-skeleton-code-for-the-ai-models-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="created-skeleton-code-for-the-ai-models-algorithm">Created Skeleton code for the AI Models algorithm</h2>
+<p>First a model was made following the graphic from last week, the only added characteristics include a variable to hold the best image once it is selected, a variable to track if an image was randomly chosen by the algorithm, and that the program exits if no good picture is available. Otherwise the algorithm’s skeleton is made as planned reading in images from a folder, a spot to add models that evaluate image quality, spots to evaluate characteristics, then finally a section to write to a csv file. Minimal code was added to the skeleton at the beginning of the week.</p>
+<p><img src="eval_skel1.png" title="First Eval Pic" class="img-fluid"></p>
+<p><img src="eval_skel2.png" title="Second Eval Pic" class="img-fluid"></p>
+<p><img src="eval_skel3.png" title="Third Eval Pic" class="img-fluid"></p>
 
 
 </section>
