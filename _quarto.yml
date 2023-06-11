@@ -6,7 +6,7 @@ website:
   navbar:
     background: '#C8102E'
     right:
-      - About.qmd
+      - about.qmd
       - icon: linkedin
         href: https://www.linkedin.com/in/gavin-fisher-0b3088238/
       - icon: github
