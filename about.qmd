@@ -11,6 +11,8 @@ about:
       text: Github
       href: https://github.com/Gavinfishy
 ---
+About 
+
 This blog's purpose is to keep track of code done during Gavin D Fisher's time at Iowa State's Data Science for the Public Good program.
 
 ### links to other members of the DSPG AI Housing Team
