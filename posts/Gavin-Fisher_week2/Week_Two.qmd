@@ -2,7 +2,7 @@
 title: "Week Two Blog"
 author: "Gavin Fisher"
 date: "2023-05-23"
-categories: ["Week Two"]
+categories: ["Week Two", "R"]
 image: 'Iowa_pumas.png'
 ---
 
