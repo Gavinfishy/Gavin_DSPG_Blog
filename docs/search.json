@@ -46,7 +46,7 @@
     "href": "posts/Gavin-Fisher_week5/Week_Five.html",
     "title": "Week Five Blog",
     "section": "",
-    "text": "First a model was made following the graphic from last week, the only added characteristics include a variable to hold the best image once it is selected, a variable to track if an image was randomly chosen by the algorithm, and that the program exits if no good picture is available. Otherwise the algorithm’s skeleton is made as planned reading in images from a folder, a spot to add models that evaluate image quality, spots to evaluate characteristics, then finally a section to write to a csv file. Minimal code was added to the skeleton at the beginning of the week."
+    "text": "First a model was made following the graphic from last week, the only added characteristics include a variable to hold the best image once it is selected, a variable to track if an image was randomly chosen by the algorithm, and that the program exits if no good picture is available. Otherwise the algorithm’s skeleton is made as planned reading in images from a folder, a spot to add models that evaluate image quality, spots to evaluate characteristics, then finally a section to write to a csv file. Minimal code was added to the skeleton at the beginning of the week.\n\n\n\nAfter the initial Skeleton code was made the first vegetation model was used to demonstrate how we would read in the models that we create then push images through the model to get a prediction of the output."
   },
   {
     "objectID": "posts/House_blog/House_blog.html",
@@ -102,6 +102,6 @@
     "href": "posts/House_blog_5/House_blog_5.html",
     "title": "Housing Team Recap Week Five",
     "section": "",
-    "text": "First a model was made following the graphic from last week, the only added characteristics include a variable to hold the best image once it is selected, a variable to track if an image was randomly chosen by the algorithm, and that the program exits if no good picture is available. Otherwise the algorithm’s skeleton is made as planned reading in images from a folder, a spot to add models that evaluate image quality, spots to evaluate characteristics, then finally a section to write to a csv file. Minimal code was added to the skeleton at the beginning of the week.\n\n\n\nAfter the initial Skeleton code was made the first vegetation model was used to demonstrate how we would read in the models that we create then push images through the image to get a prediction of the output."
+    "text": "First a model was made following the graphic from last week, the only added characteristics include a variable to hold the best image once it is selected, a variable to track if an image was randomly chosen by the algorithm, and that the program exits if no good picture is available. Otherwise the algorithm’s skeleton is made as planned reading in images from a folder, a spot to add models that evaluate image quality, spots to evaluate characteristics, then finally a section to write to a csv file. Minimal code was added to the skeleton at the beginning of the week.\n\n\n\nAfter the initial Skeleton code was made the first vegetation model was used to demonstrate how we would read in the models that we create then push images through the model to get a prediction of the output."
   }
 ]
