@@ -14,7 +14,7 @@ about:
 
 This blog's purpose is to keep track of code done during Gavin D Fisher's time at Iowa State's Data Science for the Public Good program.
 
-### links to other members of the DSPG AI Housing Team
+### Links to other members of the DSPG AI Housing Team
 
 Undergrads: [Angelina](https://1angelinaevans.github.io/AngelinaEvansBlog/), [Kailyn](https://kailynhogan.github.io/Kailyn_Hogan_DSPG_Blog/)
 
