@@ -16,8 +16,3 @@ First a model was made following the graphic from last week, the only added char
 ![](eval_skel3.png "Third Eval Pic")
 
 
-
-After the initial Skeleton code was made the first vegetation model was used to demonstrate how we would read in the models that we create then push images through the model to get a prediction of the output. 
-
-
-![](eval_skel4.png "Third Eval Pic")
