@@ -52,19 +52,31 @@ On top of the AI models we needed to start filling in other characteristics abou
 
 In order to get a head start on spatial mapping which we will use as part of our end results demonstration, we took a look into Geospatial Mapping on Datacamp, got back into using the census data, and took a look at Kyle Walkers TidyCensus book (online free!).
 
+Using the US census data we started to look at changes in Iowa population from 2000-2020.
+![](Week_Five_Housing_Blog_Images/pop_change.png "linear pop change")
+![](Week_Five_Housing_Blog_Images/pop_change_bar.png)
+
 
 We tested out QGIS by mapping Slater and New Hampton using the lat long information off of the Google API.
+
+![](Week_Five_Housing_Blog_Images/qgis.png "qgis interface")
 
 ![](Week_Five_Housing_Blog_Images/dots.png "Slater graph")
 
 ![](Week_Five_Housing_Blog_Images/more_dots.png "New Hampton graph")
 
 
+In 
+
+
 
 ### ITAG Conference
-We were able to meet with many vendors to learn about their companies and introduce our program and project. There were also many talks about Cyber Security, GIS, and IT.
+We were able to meet with many vendors to learn about their companies and introduce our program and project. There were also many talks about Cyber Security, GIS, and IT. 
 
+Presentations we attended: Modernize Your ArcGIS Web AppBuilder Apps Using Experience Builder by Mitch Winiecki, Bullwall by Don McCraw, ESRI Hands on Learning Lab by Rick Zellmer, Modernizing Utility Operations with ArcGIS by Chase Fisher, Ransomware & Other Cyber Risks: Making Sense of Cybersecurity Headlines and Actionable Items for Mitigation by Ben, and finally The Story of Water at the Missouri DOC and the new Hydrography and Wetland Modelling by Mike Tully. [Link to full schedule](https://iowacountiesit.org/itag-conference/schedule/thursday/#rdv-calendar)
+
+![](Week_Five_Housing_Blog_Images/password.jpeg "password security")
 
 ![](Week_Five_Housing_Blog_Images/ESRI_guy.jpg "ESRI guy")
 
-
+![](Week_Five_Housing_Blog_Images/veeam.png)
