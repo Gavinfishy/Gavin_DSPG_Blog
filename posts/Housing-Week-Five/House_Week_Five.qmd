@@ -54,6 +54,7 @@ In order to get a head start on spatial mapping which we will use as part of our
 
 Using the US census data we started to look at changes in Iowa population from 2000-2020.
 ![](Week_Five_Housing_Blog_Images/pop_change.png "linear pop change")
+
 ![](Week_Five_Housing_Blog_Images/pop_change_bar.png)
 
 
@@ -64,10 +65,6 @@ We tested out QGIS by mapping Slater and New Hampton using the lat long informat
 ![](Week_Five_Housing_Blog_Images/dots.png "Slater graph")
 
 ![](Week_Five_Housing_Blog_Images/more_dots.png "New Hampton graph")
-
-
-In 
-
 
 
 ### ITAG Conference
