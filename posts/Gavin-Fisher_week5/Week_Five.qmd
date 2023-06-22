@@ -2,7 +2,7 @@
 title: "Week Five Blog"
 author: "Gavin Fisher"
 date: "2023-06-15"
-categories: ["Week Five", "AI Models", "Python"]
+categories: ["Week Five", "AI Models", "Python", "Google Colab"]
 ---
 
 ## Created Skeleton code for the AI Models algorithm
@@ -32,3 +32,13 @@ Finally after making the initial models they were added to the house_evaluator p
 This image shows how the models with more than one label can return multiple options.
 
 ![](eval_skel5.png "Fifth Eval Pic")
+
+
+
+We also went to the ITAG conference. I went to Bullwall by Don McCraw, Ransomware & Other Cyber Risks: Making Sense of Cybersecurity Headlines and Actionable Items for Mitigation by Ben, and finally The Story of Water at the Missouri DOC and the new Hydrography and Wetland Modelling by Mike Tully. [Link to full schedule](https://iowacountiesit.org/itag-conference/schedule/thursday/#rdv-calendar). I found the Bullwall talk very interesting which explained generally how cybersecurity works and how their product is an extra protection layer.
+
+
+
+
+
+
