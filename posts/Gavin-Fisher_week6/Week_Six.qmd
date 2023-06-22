@@ -5,7 +5,7 @@ date: "2023-06-22"
 categories: ["Week Six", "AI Models", "Python"]
 ---
 
-## Collected Data in Cities of Interest and Greatly Advanced Progress of Python Evaluator Script
+## Data Collection and Python Evaluator Improvements
 
 Monday DSPG assessed Grundy Center and New Hampton by taking pictures of houses and tracking characteristics of the houses. Tuesday we had a similar experience assessing Independence. A few details came to mind during these events, first in the Fulcrum app we had the option to evaluate roofs labeled AI Roof.
 
@@ -23,7 +23,11 @@ I made this graph real quick just to visualize the counties which we are focusin
 
 Here is a closer look at the fulcrum app we used to evaluate houses. The first image shows the different folders for each community, followed by the interface for a singular house evaluation.
 
-![](apps.png) ![](fulcrum_top.png) ![](fulcrum_bottom.png)
+![](apps.png)
+
+![](fulcrum_top.png) 
+
+![](fulcrum_bottom.png)
 
 Next for the code I built on the skeleton from last week mostly following the code plan diagram I made 2 weeks ago(?). As of right now house_evaluator.py can read in a folder with images in it (as if it was one house from multiple sources). The program will use the house_present_classifier, clear_image_classifier, and multiple_houses_classifier models. These models evaluate whether each image has a visible house, whether the house is obstructed, and if there are multiple houses visible. Ideally we want to evaluate an image with a house, minimal obstruction, and only one house visible. Each model will remove unwanted images from the list in the hopes of choosing only the best image of the house to evaluate.
 
@@ -33,7 +37,9 @@ If no image remains the program returns that a better image is needed of the hou
 
 Next the remaining image will be ran through the vegetation, siding, and gutter models. As I said last week the gutter model is on hold until I get more images of poor gutters and spaces in the code are there for roof and window models for either next year or my free time. All of the models predict pretty poorly still because we need a lot more data on bad house images but they are predicting at a 35-45% confidence rate currently.
 
-After I got all of the models in the program properly I started to work on writing to CSV files. The intention was to print each attribute such as vegetation in it's respective column based on address. I used the CSV library which turned out to take longer than it seems giving me issues such as wiping the file clean, not writing any values, then writing values to the leftmost row available after address. I finally got the attributes to print to the correct column but printed on every row instead of only one row based on address. Sadat, our AI master student, used Pandas and could correctly do the correct task in about 10 lines where it took my method about 40 lines of code. Long story short I am now implementing pandas to manipulate the csv files. 
+After I got all of the models in the program properly I started to work on writing to CSV files. The intention was to print each attribute such as vegetation in it's respective column based on address. I used the CSV library which turned out to take longer than it seems giving me issues such as wiping the file clean, not writing any values, then writing values to the leftmost row available after address. I finally got the attributes to print to the correct column but printed on every row instead of only one row based on address. 
+
+Sadat, our AI fellow, used Pandas and could correctly do the correct task in about 10 lines where it took my method about 40 lines of code. Long story short I am now implementing pandas to manipulate the csv files. 
 
 This code shows the program checking if the columns exist in the csv and if not adding the column. Then the values of each is wrote to the CSV file. After discussion with Sadat I added the model confidence percentage so that as we upload more accurate models we can see how well they are preforming and also give an average confidence for a final report.
 
@@ -41,7 +47,9 @@ This code shows the program checking if the columns exist in the csv and if not 
 
 ![](write_csv.png) 
 
-In summary this program so far can take in a folder of images, choose the best one, evaluate it's vegetation, siding, and gutters, then print these attributes to a csv at the same address as the input folder. This python Script was nearing 400 lines of code due to tests and old code I commented out to save. To run many images through this program I think the easiest path would to make a parent folder full of folders labeled by address and inside of the address folders are the images for each address. I did not want a 400 line for loop to iterate through this parent folder so my goal for this weekend is to make two scripts. The first script will read in the files and iterate through them calling the second script each run to evaluate the images within and return house attributes. The first script will take these attributes and return them to a CSV file to the proper column and address. This will be essentially the same as what I have working now but it will be able to read and document many folders of houses rather than individual houses manually placed at a time.
+In summary this program so far can take in a folder of images, choose the best one, evaluate it's vegetation, siding, and gutters, then print these attributes to a csv at the same address as the input folder. This python Script was nearing 400 lines of code due to tests and old code I commented out to save. To run many images through this program I think the easiest path would to make a parent folder full of folders labeled by address and inside of the address folders are the images for each address. I did not want a 400 line for loop to iterate through this parent folder so my goal for this weekend is to make two scripts. 
+
+The first script will read in the files and iterate through them calling the second script each run to evaluate the images within and return house attributes. The first script will take these attributes and return them to a CSV file to the proper column and address. This will be essentially the same as what I have working now but it will be able to read and document many folders of houses rather than individual houses manually placed at a time. I will leave the current script alone since it works and make two completely new scripts to improve this method.
 
 
 
