@@ -2,7 +2,7 @@
 title: "Week Six Blog"
 author: "Gavin Fisher"
 date: "2023-06-22"
-categories: ["Week Six", "AI Models", "Python"]
+categories: ["Week Six", "AI Models", "Python", "Excel"]
 ---
 
 ## Data Collection and Python Evaluator Improvements

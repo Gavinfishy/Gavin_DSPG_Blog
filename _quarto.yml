@@ -19,8 +19,6 @@ website:
 
 #editor: visual
 
-
-
 format:
   html:
     backgroundcolor: "#CAC7A7"

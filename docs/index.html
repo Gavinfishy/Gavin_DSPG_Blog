@@ -70,9 +70,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-author','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -153,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="AI Models">AI Models <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Excel">Excel <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Google Colab">Google Colab <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Housing Team">Housing Team <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Jupyter Notebook">Jupyter Notebook <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Project Plan">Project Plan <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(3)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Web Scraping">Web Scraping <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Week Five">Week Five <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Week Four">Week Four <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Week One">Week One <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Week Six">Week Six <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Week Three">Week Three <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Week Two">Week Two <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-unnumbered"><div class="category" data-category="AI Models">AI Models</div><div class="category" data-category="Excel">Excel</div><div class="category" data-category="Google Colab">Google Colab</div><div class="category" data-category="Housing Team">Housing Team</div><div class="category" data-category="Jupyter Notebook">Jupyter Notebook</div><div class="category" data-category="Project Plan">Project Plan</div><div class="category" data-category="Python">Python</div><div class="category" data-category="R">R</div><div class="category" data-category="Web Scraping">Web Scraping</div><div class="category" data-category="Week Five">Week Five</div><div class="category" data-category="Week Four">Week Four</div><div class="category" data-category="Week One">Week One</div><div class="category" data-category="Week Six">Week Six</div><div class="category" data-category="Week Three">Week Three</div><div class="category" data-category="Week Two">Week Two</div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -164,21 +164,46 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Week Six,AI Models,Python" data-listing-date-sort="1687410000000" data-listing-file-modified-sort="1687467540280" data-listing-reading-time-sort="5.425">
-<div class="thumbnail">
-<p><a href="./posts/Gavin-Fisher_week6/Week_Six.html"> <img src="./posts/Gavin-Fisher_week6/counties_investigated.png" class="thumnail-image"> </a></p>
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-<div class="body">
-<a href="./posts/Gavin-Fisher_week6/Week_Six.html">
-<h3 class="no-anchor listing-title">
+<div class="list grid quarto-listing-cols-2">
+<div class="g-col-1" data-index="0" data-categories="Week Six,AI Models,Python,Excel" data-listing-date-sort="1687410000000" data-listing-file-modified-sort="1687553256023" data-listing-reading-time-sort="5.425">
+<a href="./posts/Gavin-Fisher_week6/Week_Six.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/Gavin-Fisher_week6/counties_investigated.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Week Six Blog
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-reading-time card-text text-muted">
+5 min
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Week Six'); return false;">
 Week Six
@@ -189,37 +214,38 @@ AI Models
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
 </div>
+<div class="listing-category" onclick="window.quartoListingCategory('Excel'); return false;">
+Excel
 </div>
-<a href="./posts/Gavin-Fisher_week6/Week_Six.html">
-<div class="listing-description">
-Monday DSPG assessed Grundy Center and New Hampton by taking pictures of houses and tracking characteristics of the houses. Tuesday…
 </div>
-</a>
+<div class="card-text listing-description">
+Monday DSPG assessed Grundy Center and New Hampton by taking pictures of houses and…
 </div>
-<div class="metadata">
-<a href="./posts/Gavin-Fisher_week6/Week_Six.html">
-<div class="listing-date">
-Jun 22, 2023
-</div>
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Gavin Fisher
 </div>
+<div class="listing-date">
+June 22, 2023
+</div>
+</div>
+</div>
+</div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Week Five,AI Models,Python,Google Colab" data-listing-date-sort="1686805200000" data-listing-file-modified-sort="1687464274905" data-listing-reading-time-sort="2.46">
-<div class="thumbnail">
-<p><a href="./posts/Gavin-Fisher_week5/Week_Five.html"> <img src="./posts/Gavin-Fisher_week5/eval_skel1.png " class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Gavin-Fisher_week5/Week_Five.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="1" data-categories="Week Five,AI Models,Python,Google Colab" data-listing-date-sort="1686805200000" data-listing-file-modified-sort="1687464274905" data-listing-reading-time-sort="2.46">
+<a href="./posts/Gavin-Fisher_week5/Week_Five.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/Gavin-Fisher_week5/eval_skel1.png " class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Week Five Blog
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-reading-time card-text text-muted">
+2 min
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Week Five'); return false;">
 Week Five
@@ -234,36 +260,34 @@ Python
 Google Colab
 </div>
 </div>
-<a href="./posts/Gavin-Fisher_week5/Week_Five.html">
-<div class="listing-description">
-First a model was made following the graphic from last week, the only added characteristics include a variable to hold the best image once it is selected, a variable to…
+<div class="card-text listing-description">
+First a model was made following the graphic from last week, the only added…
 </div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Gavin-Fisher_week5/Week_Five.html">
-<div class="listing-date">
-Jun 15, 2023
-</div>
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Gavin Fisher
 </div>
+<div class="listing-date">
+June 15, 2023
+</div>
+</div>
+</div>
+</div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Week Five,Housing Team" data-listing-date-sort="1686805200000" data-listing-file-modified-sort="1687464280433" data-listing-reading-time-sort="3.415">
-<div class="thumbnail">
-<p><a href="./posts/Housing-Week-Five/House_Week_Five.html"> <img src="./posts/Housing-Week-Five/Week_Five_Housing_Blog_Images/ESRI_guy.jpg" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Housing-Week-Five/House_Week_Five.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="2" data-categories="Week Five,Housing Team" data-listing-date-sort="1686805200000" data-listing-file-modified-sort="1687464280433" data-listing-reading-time-sort="3.415">
+<a href="./posts/Housing-Week-Five/House_Week_Five.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/Housing-Week-Five/Week_Five_Housing_Blog_Images/ESRI_guy.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Housing Team Recap Week Five
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-reading-time card-text text-muted">
+3 min
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Week Five'); return false;">
 Week Five
@@ -272,36 +296,34 @@ Week Five
 Housing Team
 </div>
 </div>
-<a href="./posts/Housing-Week-Five/House_Week_Five.html">
-<div class="listing-description">
-First a model was made following the graphic from last week, the only added characteristics include a variable to hold the best image once it is selected, a variable to…
+<div class="card-text listing-description">
+First a model was made following the graphic from last week, the only added…
 </div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Housing-Week-Five/House_Week_Five.html">
-<div class="listing-date">
-Jun 15, 2023
-</div>
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Gavin Fisher
 </div>
+<div class="listing-date">
+June 15, 2023
+</div>
+</div>
+</div>
+</div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Week Four,Web Scraping,Project Plan,Excel,R" data-listing-date-sort="1686200400000" data-listing-file-modified-sort="1686439562070" data-listing-reading-time-sort="3.175">
-<div class="thumbnail">
-<p><a href="./posts/Gavin-Fisher_week4/Week_Four.html"> <img src="./posts/Gavin-Fisher_week4/Beacon.png " class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Gavin-Fisher_week4/Week_Four.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="3" data-categories="Week Four,Web Scraping,Project Plan,Excel,R" data-listing-date-sort="1686200400000" data-listing-file-modified-sort="1686439562070" data-listing-reading-time-sort="3.175">
+<a href="./posts/Gavin-Fisher_week4/Week_Four.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/Gavin-Fisher_week4/Beacon.png " class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Week Four Blog
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-reading-time card-text text-muted">
+3 min
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Week Four'); return false;">
 Week Four
@@ -319,36 +341,34 @@ Excel
 R
 </div>
 </div>
-<a href="./posts/Gavin-Fisher_week4/Week_Four.html">
-<div class="listing-description">
-This week the housing team focused pretty heavily on figuring out how to web scrape. The beginning of the week consisted of collecting addresses from Beacon and Vanguard by…
+<div class="card-text listing-description">
+This week the housing team focused pretty heavily on figuring out how to web scrape. The…
 </div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Gavin-Fisher_week4/Week_Four.html">
-<div class="listing-date">
-Jun 8, 2023
-</div>
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Gavin Fisher
 </div>
+<div class="listing-date">
+June 8, 2023
+</div>
+</div>
+</div>
+</div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="Week Three,AI Models,Project Plan,Jupyter Notebook" data-listing-date-sort="1685595600000" data-listing-file-modified-sort="1686439604209" data-listing-reading-time-sort="1.4">
-<div class="thumbnail">
-<p><a href="./posts/Gavin-Fisher_week3/Week_Three.html"> <img src="./posts/Gavin-Fisher_week3/AI_main.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Gavin-Fisher_week3/Week_Three.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="4" data-categories="Week Three,AI Models,Project Plan,Jupyter Notebook" data-listing-date-sort="1685595600000" data-listing-file-modified-sort="1686439604209" data-listing-reading-time-sort="1.4">
+<a href="./posts/Gavin-Fisher_week3/Week_Three.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/Gavin-Fisher_week3/AI_main.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Week Three Blog
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-reading-time card-text text-muted">
+1 min
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Week Three'); return false;">
 Week Three
@@ -363,36 +383,34 @@ Project Plan
 Jupyter Notebook
 </div>
 </div>
-<a href="./posts/Gavin-Fisher_week3/Week_Three.html">
-<div class="listing-description">
-During this week a base AI model was made that can evaluate whether houses have vegetation in front of the property or not.This model evaluates two inputs of image folders…
+<div class="card-text listing-description">
+During this week a base AI model was made that can evaluate whether houses have…
 </div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Gavin-Fisher_week3/Week_Three.html">
-<div class="listing-date">
-Jun 1, 2023
-</div>
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Gavin Fisher
 </div>
+<div class="listing-date">
+June 1, 2023
+</div>
+</div>
+</div>
+</div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="Week Two,Housing Team,R" data-listing-date-sort="1684990800000" data-listing-file-modified-sort="1686439732247" data-listing-reading-time-sort="0.845">
-<div class="thumbnail">
-<p><a href="./posts/House_blog/House_blog.html"> <img src="./posts/House_blog/matrix.png " class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/House_blog/House_blog.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="5" data-categories="Week Two,Housing Team,R" data-listing-date-sort="1684990800000" data-listing-file-modified-sort="1686439732247" data-listing-reading-time-sort="0.845">
+<a href="./posts/House_blog/House_blog.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/House_blog/matrix.png " class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Housing Team Recap Week Two
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-reading-time card-text text-muted">
+0 min
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Week Two'); return false;">
 Week Two
@@ -404,36 +422,34 @@ Housing Team
 R
 </div>
 </div>
-<a href="./posts/House_blog/House_blog.html">
-<div class="listing-description">
+<div class="card-text listing-description">
 Project is more planned out
 </div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/House_blog/House_blog.html">
-<div class="listing-date">
-May 25, 2023
-</div>
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Gavin Fisher
 </div>
+<div class="listing-date">
+May 25, 2023
+</div>
+</div>
+</div>
+</div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="Week Two,R" data-listing-date-sort="1684818000000" data-listing-file-modified-sort="1686581645812" data-listing-reading-time-sort="0.915">
-<div class="thumbnail">
-<p><a href="./posts/Gavin-Fisher_week2/Week_Two.html"> <img src="./posts/Gavin-Fisher_week2/Iowa_pumas.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Gavin-Fisher_week2/Week_Two.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="6" data-categories="Week Two,R" data-listing-date-sort="1684818000000" data-listing-file-modified-sort="1686581645812" data-listing-reading-time-sort="0.915">
+<a href="./posts/Gavin-Fisher_week2/Week_Two.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/Gavin-Fisher_week2/Iowa_pumas.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Week Two Blog
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-reading-time card-text text-muted">
+0 min
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Week Two'); return false;">
 Week Two
@@ -442,36 +458,34 @@ Week Two
 R
 </div>
 </div>
-<a href="./posts/Gavin-Fisher_week2/Week_Two.html">
-<div class="listing-description">
-We watched videos learning about the basics of Tidycensus from the developer of the package. It taught basic map creation and general use of the application link to video I made one of the graphics from the video and one from his textbook online (I excluded the images made with the walk through). This blog was also created during the second…
+<div class="card-text listing-description">
+We watched videos learning about the basics of Tidycensus from…
 </div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Gavin-Fisher_week2/Week_Two.html">
-<div class="listing-date">
-May 23, 2023
-</div>
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Gavin Fisher
 </div>
+<div class="listing-date">
+May 23, 2023
+</div>
+</div>
+</div>
+</div>
 </a>
 </div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="Week One,Python,R" data-listing-date-sort="1684731600000" data-listing-file-modified-sort="1686439693593" data-listing-reading-time-sort="1.525">
-<div class="thumbnail">
-<p><a href="./posts/Gavin-Fisher_week1/Week_One.html"> <img src="./posts/Gavin-Fisher_week1/Datacamp_logo.jpg" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Gavin-Fisher_week1/Week_One.html">
-<h3 class="no-anchor listing-title">
+<div class="g-col-1" data-index="7" data-categories="Week One,Python,R" data-listing-date-sort="1684731600000" data-listing-file-modified-sort="1686439693593" data-listing-reading-time-sort="1.525">
+<a href="./posts/Gavin-Fisher_week1/Week_One.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/Gavin-Fisher_week1/Datacamp_logo.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
 Week One Blog
-</h3>
-<div class="listing-subtitle">
-
+</h5>
+<div class="listing-reading-time card-text text-muted">
+1 min
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Week One'); return false;">
 Week One
@@ -483,22 +497,20 @@ Python
 R
 </div>
 </div>
-<a href="./posts/Gavin-Fisher_week1/Week_One.html">
-<div class="listing-description">
-Nine Lessons Completed: Intro to Deep Learning with Keras, Web Scraping in Python, Data Communication Concepts, Image Processing in Python, GitHub Concepts, AI Fundamentals…
+<div class="card-text listing-description">
+Nine Lessons Completed: Intro to Deep Learning with Keras, Web Scraping in Python, Data…
 </div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Gavin-Fisher_week1/Week_One.html">
-<div class="listing-date">
-May 22, 2023
-</div>
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Gavin Fisher
 </div>
-</a>
+<div class="listing-date">
+May 22, 2023
 </div>
+</div>
+</div>
+</div>
+</a>
 </div>
 </div>
 <div class="listing-no-matching d-none">
