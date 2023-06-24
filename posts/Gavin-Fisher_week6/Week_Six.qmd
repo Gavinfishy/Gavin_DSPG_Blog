@@ -1,6 +1,6 @@
 ---
 title: "Week Six Blog"
-author: "Gavin Fisher"
+author: "Gavin D. Fisher"
 date: "2023-06-22"
 categories: ["Week Six", "AI Models", "Python", "Excel"]
 ---
@@ -53,13 +53,19 @@ The first script will read in the files and iterate through them calling the sec
 
 
 
+### End of Day Friday Update
 
+Today was very productive, the entire program now works. city_evaluator.py can read in a parent folder which contains address folders, it then calls house_evaluator.py for each address folder. house_evaluator runs images through the AI models (still largely inaccurate) then returns attributes of the image detected. Having multiple files was accomplished by creating a function within house_evaluator then calling that function in city_evaluator.
 
+![](house_eval_return.png)
 
+![](city_eval_load.png)
 
+After loading in all the variables in city_eval I wrote to the csv by address. This method largely stayed the same from yesterday I just had to tweak it so that the name being printed to was iterated.
 
+![](write_csv.png)
 
+![](csv_print_correct.png)
 
-
-
+In my actual conclusion I will say this was a very successful week even though it was shortened. I plan to make a blog post just for my weekend project so that I don't have to remember it next Thursday. I will attempt to make an AI heatmap so we can visually see why the models guess incorrectly (right now they suck because we barely have any data). A lot of people I have talked to think of object detection when I say AI heatmap so I will need to explain in depth why this is different. Also in the image above you can see gutter is FALSE and 0 confidence because I have still neglected making that model. I now have access to data maybe I can get it made next week. We also REALLY need to update the other models with the data we collected in Grundy Center, Independence, and New Hampton. 
 

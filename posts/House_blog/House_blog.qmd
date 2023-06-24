@@ -1,6 +1,6 @@
 ---
 title: "Housing Team Recap Week Two"
-author: "Gavin Fisher"
+author: "Gavin D. Fisher"
 date: "2023-05-25"
 categories: ["Week Two", "Housing Team", "R"]
 ---

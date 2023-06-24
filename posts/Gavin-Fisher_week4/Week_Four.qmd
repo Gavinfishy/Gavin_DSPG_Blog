@@ -1,6 +1,6 @@
 ---
 title: "Week Four Blog"
-author: "Gavin Fisher"
+author: "Gavin D. Fisher"
 date: "2023-06-08"
 categories: ["Week Four", "Web Scraping", "Project Plan", "Excel", "R"]
 ---

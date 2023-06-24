@@ -1,6 +1,6 @@
 ---
 title: "Week One Blog"
-author: "Gavin Fisher"
+author: "Gavin D. Fisher"
 date: "2023-05-22"
 categories: ["Week One", "Python", "R"]
 image: 'Datacamp_logo.jpg'
@@ -14,7 +14,7 @@ Nine Lessons Completed: Intro to Deep Learning with Keras, Web Scraping in Pytho
 
 ### Intro to Deep Learning with Keras
 
-```         
+``` {python}
 # Import the Sequential model and Dense layer
 import tensorflow
 from tensorflow.keras.models import Sequential
@@ -97,3 +97,5 @@ show_image_with_corners(building_image, coords)
 ```
 
 ![Building Corners](building_corners.png "Title: Building Corners"){fig-alt="Building Corners image"}
+
+I left out a lot of the cool images I got to make but I would definitely recommend Datacamp for people trying to learn data related topics with R, Python, and machine learning because I found these lessons very helpful and fun. I'm not sure how much it costs because it is provided through DSPG but I think it would be worth it to buy for a month or something and do as many lessons as possible during the summer or so.

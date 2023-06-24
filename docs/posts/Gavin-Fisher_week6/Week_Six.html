@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Gavin Fisher">
+<meta name="author" content="Gavin D. Fisher">
 <meta name="dcterms.date" content="2023-06-22">
 
 <title>Home - Week Six Blog</title>
@@ -121,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Gavin Fisher </p>
+               <p>Gavin D. Fisher </p>
             </div>
     </div>
       
@@ -170,8 +170,18 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="write_csv.png" class="img-fluid"></p>
 <p>In summary this program so far can take in a folder of images, choose the best one, evaluate it’s vegetation, siding, and gutters, then print these attributes to a csv at the same address as the input folder. This python Script was nearing 400 lines of code due to tests and old code I commented out to save. To run many images through this program I think the easiest path would to make a parent folder full of folders labeled by address and inside of the address folders are the images for each address. I did not want a 400 line for loop to iterate through this parent folder so my goal for this weekend is to make two scripts.</p>
 <p>The first script will read in the files and iterate through them calling the second script each run to evaluate the images within and return house attributes. The first script will take these attributes and return them to a CSV file to the proper column and address. This will be essentially the same as what I have working now but it will be able to read and document many folders of houses rather than individual houses manually placed at a time. I will leave the current script alone since it works and make two completely new scripts to improve this method.</p>
+<section id="end-of-day-friday-update" class="level3">
+<h3 class="anchored" data-anchor-id="end-of-day-friday-update">End of Day Friday Update</h3>
+<p>Today was very productive, the entire program now works. city_evaluator.py can read in a parent folder which contains address folders, it then calls house_evaluator.py for each address folder. house_evaluator runs images through the AI models (still largely inaccurate) then returns attributes of the image detected. Having multiple files was accomplished by creating a function within house_evaluator then calling that function in city_evaluator.</p>
+<p><img src="house_eval_return.png" class="img-fluid"></p>
+<p><img src="city_eval_load.png" class="img-fluid"></p>
+<p>After loading in all the variables in city_eval I wrote to the csv by address. This method largely stayed the same from yesterday I just had to tweak it so that the name being printed to was iterated.</p>
+<p><img src="write_csv.png" class="img-fluid"></p>
+<p><img src="csv_print_correct.png" class="img-fluid"></p>
+<p>In my actual conclusion I will say this was a very successful week even though it was shortened. I plan to make a blog post just for my weekend project so that I don’t have to remember it next Thursday. I will attempt to make an AI heatmap so we can visually see why the models guess incorrectly (right now they suck because we barely have any data). A lot of people I have talked to think of object detection when I say AI heatmap so I will need to explain in depth why this is different. Also in the image above you can see gutter is FALSE and 0 confidence because I have still neglected making that model. I now have access to data maybe I can get it made next week. We also REALLY need to update the other models with the data we collected in Grundy Center, Independence, and New Hampton.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

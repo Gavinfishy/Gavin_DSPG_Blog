@@ -1,6 +1,6 @@
 ---
 title: "Week Three Blog"
-author: "Gavin Fisher"
+author: "Gavin D. Fisher"
 date: "2023-06-01"
 categories: ["Week Three", "AI Models", "Project Plan", "Jupyter Notebook"]
 image: "AI_main.png"

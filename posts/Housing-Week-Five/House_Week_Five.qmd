@@ -1,6 +1,6 @@
 ---
 title: "Housing Team Recap Week Five"
-author: "Gavin Fisher"
+author: "Gavin D. Fisher"
 date: "2023-06-15"
 categories: ["Week Five", "Housing Team"]
 image: "Week_Five_Housing_Blog_Images/ESRI_guy.jpg"

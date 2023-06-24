@@ -1,6 +1,6 @@
 ---
 title: "Week Two Blog"
-author: "Gavin Fisher"
+author: "Gavin D. Fisher"
 date: "2023-05-23"
 categories: ["Week Two", "R"]
 image: 'Iowa_pumas.png'
@@ -37,3 +37,10 @@ ggplot() +
 ```
 
 ![Outlined Des Moines metro](Des_Moines_metro.png "Title: Outlined Des Moines Metro"){fig-alt="Graph of Des Moines metro"}
+
+
+
+There are many more cool graphs to make with this library that I did not touch. Between Kyle Walker's free book online and his lectures on YouTube there is tons to learn and do with the census data using this library. Hopefully this will be helpful later in our project and I will get to learn more.
+
+
+

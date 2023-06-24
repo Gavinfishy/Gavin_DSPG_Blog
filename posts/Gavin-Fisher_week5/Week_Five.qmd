@@ -1,6 +1,6 @@
 ---
 title: "Week Five Blog"
-author: "Gavin Fisher"
+author: "Gavin D. Fisher"
 date: "2023-06-15"
 categories: ["Week Five", "AI Models", "Python", "Google Colab"]
 ---
@@ -15,7 +15,6 @@ First a model was made following the graphic from last week, the only added char
 
 ![](eval_skel3.png "Third Eval Pic")
 
-
 After the initial Skeleton code was made the first vegetation model was used to demonstrate how we would read in the models that we create then push images through the model to get a prediction of the output.
 
 ![](eval_skel4.png "Fourth Eval Pic")
@@ -28,17 +27,8 @@ Most of the models were very inaccurate due to the lack of data on poor house im
 
 ![](image_sample.png "images sample")
 
-Finally after making the initial models they were added to the house_evaluator python script. Currently, the program prints the values returned by the models to a test CSV. Once more training images are obtained to improve the models accuracy the python script will print the results to the address of the images provided in the houses_databases CSV files. 
-This image shows how the models with more than one label can return multiple options.
+Finally after making the initial models they were added to the house_evaluator python script. Currently, the program prints the values returned by the models to a test CSV. Once more training images are obtained to improve the models accuracy the python script will print the results to the address of the images provided in the houses_databases CSV files. This image shows how the models with more than one label can return multiple options.
 
 ![](eval_skel5.png "Fifth Eval Pic")
 
-
-
 We also went to the ITAG conference. I went to Bullwall by Don McCraw, Ransomware & Other Cyber Risks: Making Sense of Cybersecurity Headlines and Actionable Items for Mitigation by Ben, and finally The Story of Water at the Missouri DOC and the new Hydrography and Wetland Modelling by Mike Tully. [Link to full schedule](https://iowacountiesit.org/itag-conference/schedule/thursday/#rdv-calendar). I found the Bullwall talk very interesting which explained generally how cybersecurity works and how their product is an extra protection layer.
-
-
-
-
-
-
