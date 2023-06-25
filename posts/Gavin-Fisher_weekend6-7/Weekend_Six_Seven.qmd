@@ -1,5 +1,5 @@
 ---
-title: "Weekend after Week Six Blog"
+title: "Weekend Six Blog"
 author: "Gavin D. Fisher"
 date: "2023-06-25"
 categories: ["Week Six", "AI Models", "Python", "Weekend"]
