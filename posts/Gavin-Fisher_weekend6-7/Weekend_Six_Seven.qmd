@@ -8,6 +8,7 @@ categories: ["Week Six", "AI Models", "Python", "Weekend"]
 This weekend I set out to make what I refer to as AI heatmaps which is created when an image classification model predicts a class we also track what pixels in the image helped influence it's prediction. I tried to use pytorch but after lots of code and lots of error I put a temporary pause and explored other libraries. I ended up using keras and resnet for my class activation mapping python script by following along with a [video](https://www.youtube.com/watch?v=4v9usdvGU50&ab_channel=LazyProgrammer).
 
 ![](panda_identify.png)
+
 Although I think this looks like a heatmap I think that the proper name is a class activation map or CAM. Maybe I will refer to it as AI heatmaps anyway.
 
 From this video I got a majority of the code but some of the libraries were outdated so I had to use the pillow library for images rather than keras images. Resnet also seemed to change the way you could call layers so I had to change the call to the exact name of the layer which could be really inefficient if the amount of layers change. Otherwise the code as of right now is pretty much the same.
