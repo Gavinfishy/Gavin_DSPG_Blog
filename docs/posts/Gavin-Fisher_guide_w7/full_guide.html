@@ -9,7 +9,7 @@
 <meta name="author" content="Gavin D. Fisher">
 <meta name="dcterms.date" content="2023-06-27">
 
-<title>Home - How to Evaluate a City</title>
+<title>Home - Guide: How to Evaluate a City</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">How to Evaluate a City</h1>
+      <h1 class="title">Guide: How to Evaluate a City</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Week Seven</div>
                 <div class="quarto-category">AI Models</div>
@@ -148,15 +148,16 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="how-to-collect-addresses-images-and-evaluate-those-images-using-ai-models" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-collect-addresses-images-and-evaluate-those-images-using-ai-models">How to collect addresses, images, and evaluate those images using AI models</h2>
+<section id="how-to-collect-addresses-images-and-evaluate-those-images-using-ai-models" class="level1">
+<h1>How to Collect Addresses, Images, and Evaluate Those Images Using AI Models</h1>
 <p>This will be a full guide on how to recreate what AI housing team has done this summer using Ogden IA as an example.</p>
-<section id="address-collection-and-cleaning" class="level3">
-<h3 class="anchored" data-anchor-id="address-collection-and-cleaning">Address Collection and Cleaning</h3>
+<section id="address-collection-and-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="address-collection-and-cleaning">Address Collection and Cleaning</h2>
 <p>First we need to go to Beacon to try and collect a list of addresses. The following link will bring you to Boone County and you need to scroll in on Ogden (West/center). <a href="https://beacon.schneidercorp.com/Application.aspx?AppID=84&amp;LayerID=795&amp;PageTypeID=1&amp;PageID=913">Beacon Map View</a></p>
 <p>We found a tool called <a href="https://chrome.google.com/webstore/detail/instant-data-scraper/ofaokhiedipichpaobibbnahnkdoiiah">Instant Data Scraper</a> that you need for this process. An alternative to this is badly needed as you will see soon, but this application worked for the time being when we had no prior web scraping experience yet. DSPG students for summer of 2024, I beg you to try and scrape Beacon with your own spider before using this tool to save yourself from the cleaning you have to do.</p>
 <p>Below I display an image of the Beacon interface then an image zoomed in on Ogden.</p>
-<p><img src="1beacon_main.png" class="img-fluid"> <img src="2beacon_zoom.png" class="img-fluid"></p>
+<p><img src="1beacon_main.png" class="img-fluid"></p>
+<p><img src="2beacon_zoom.png" class="img-fluid"></p>
 <p>Navigate to the buttons towards the top of the screen and find the cursor over a box. This is the select tool that we need to use for selecting properties. There is a limit of how many addresses you can grab at once so below is what it looks like if you try to grab every property at once:</p>
 <p><img src="3beacon_all.png" class="img-fluid"></p>
 <p>Instead we need to click on this button and select the polygon version.</p>
@@ -173,8 +174,8 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="8csv_edited.png" class="img-fluid"></p>
 <p>Finally I noticed address needs to be trimmed so in a new column you can use the function =TRIM(A2) then paste the result as values back into the address column.</p>
 </section>
-<section id="creating-google-api-links" class="level3">
-<h3 class="anchored" data-anchor-id="creating-google-api-links">Creating Google API Links</h3>
+<section id="creating-google-api-links" class="level2">
+<h2 class="anchored" data-anchor-id="creating-google-api-links">Creating Google API Links</h2>
 <p>What are the Google API Links? Here is an example of the beginning of an address from Grundy Center:</p>
 <p>https://maps.googleapis.com/maps/api/streetview?size=800x800&amp;location=303+I+AVE,+GRUNDY+CENTER+IOWA</p>
 <p>this is followed by &amp;key=(API Key). Pasting the entire link brings you to an image provided by Google street view if it exists. You could also use latitude and longitude coordinates instead of address but the image you get is not guaranteed to be a front image of the house. Google however, has a built in program to get the front of a house if you enter the address if it can find one.</p>
@@ -184,8 +185,30 @@ ul.task-list li input[type="checkbox"] {
 <p>Now you can grab one of the links from the leftmost column and check that the link works. All I did was copy that part of the link into my browser, added &amp;key=(API Key) and this was my result:</p>
 <p><img src="10use_link.png" class="img-fluid"></p>
 </section>
-<section id="scrape-google-images" class="level3">
-<h3 class="anchored" data-anchor-id="scrape-google-images">Scrape Google images</h3>
+<section id="scrape-google-images" class="level2">
+<h2 class="anchored" data-anchor-id="scrape-google-images">Scrape Google Images</h2>
+<p>For this section you need to obtain a Google API key to scrape images from the Google street view API. You also need to download R studio or an IDE that can run R code. If you have access to the DSPG Housing repository there is a folder named complete links which has a grab_images.R file. Below is the code for grabbing Google images for Ogden, keep in mind downloading images takes a very long time many of the files of 3k photos have taken me upwards of an hour to download. I also do not know how to control where the image file is uploaded. My current directory is my blog and the images are uploaded there, I assume there is a way to change the directory in R studio.</p>
+<p>Some errors I ran into while scraping: Google does not like addresses that are combined such as 123/456 Main St and it will cause an error. Some addresses you pull will start with a # and Google will not accept this. Lines that have the #NAME? error I delete the row. Some addresses I pulled from Ogden did not have an address but just an owner name which caused my program to throw an error. If the address is empty or does not start with a number I delete the row. I manually deleted just over 100 rows from the Ogden set which had missing addresses and was blank or filled in with owner name. This is a good example of why a personalized scraper should be made because while the chrome extension is convenient and fast it pulls back many issues with the data which we may get by scraping ourselves.</p>
+<p>(insert grab images ogden code)</p>
+<p>Some common errors with the images coming in are as follows: If Google does not have an image it will give you an image does not exist image but this should be easily identified by our AI model through training. Quick note if you retrain the models I show later in this guide only put 2-3 of these error images as to not throw off the model, having 50 or so will make the model think that image has a very high correlation. Next I have had an odd issue where the same image will be used for multiple addresses. This is quite weird because I do not know where the image is getting pulled from. Maybe there is a default image that is getting pulled somehow? But it is not just one image for Grundy Center which has about 3,500 images we pulled I saw anywhere from 10-20% of the images were duplicates with different addresses. There were probably 8-10 different images that were duplicated for different images so this is a big problem that doesn’t always happen but is a mystery to me why this happens. But hey 80-90% good images is a passing grade.</p>
+</section>
+<section id="building-a-binary-image-classification-ai-model" class="level2">
+<h2 class="anchored" data-anchor-id="building-a-binary-image-classification-ai-model">Building a Binary Image Classification AI Model</h2>
+</section>
+<section id="building-a-multi-category-image-classification-ai-model" class="level2">
+<h2 class="anchored" data-anchor-id="building-a-multi-category-image-classification-ai-model">Building a Multi-Category Image Classification AI Model</h2>
+</section>
+<section id="sorting-images" class="level2">
+<h2 class="anchored" data-anchor-id="sorting-images">Sorting Images</h2>
+</section>
+<section id="training-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="training-the-model">Training the Model</h2>
+</section>
+<section id="utilizing-a-trained-ai-model" class="level2">
+<h2 class="anchored" data-anchor-id="utilizing-a-trained-ai-model">Utilizing a Trained AI Model</h2>
+</section>
+<section id="exporting-predictions-to-a-csv-on-address" class="level2">
+<h2 class="anchored" data-anchor-id="exporting-predictions-to-a-csv-on-address">Exporting Predictions to a CSV on Address</h2>
 
 
 </section>
