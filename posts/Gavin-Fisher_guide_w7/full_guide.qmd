@@ -2,7 +2,7 @@
 title: "Guide: How to Evaluate a City"
 author: "Gavin D. Fisher"
 date: "2023-06-27"
-categories: ["Week Seven", "AI Models", "Python", "Excel", "R", "Guide"]
+categories: ["Week Seven", "AI Models", "Python", "Excel", "R", "Guide", "Web Scraping", "Google Colab"]
 execute:
   echo: false
 ---
@@ -77,39 +77,396 @@ For this section you need to obtain a Google API key to scrape images from the G
 
 Some errors I ran into while scraping: Google does not like addresses that are combined such as 123/456 Main St and it will cause an error. Some addresses you pull will start with a \# and Google will not accept this. Lines that have the #NAME? error I delete the row. Some addresses I pulled from Ogden did not have an address but just an owner name which caused my program to throw an error. If the address is empty or does not start with a number I delete the row. I manually deleted just over 100 rows from the Ogden set which had missing addresses and was blank or filled in with owner name. This is a good example of why a personalized scraper should be made because while the chrome extension is convenient and fast it pulls back many issues with the data which we may get by scraping ourselves.
 
-```{r,eval=FALSE}
-# Ogden
-og_data <- read.csv("~/GitHub/Housing/complete links/ogden_urls.csv")
-urls_start <- og_data[, 1]
-urls_full <- paste(urls_start, "&key=", sep = "")
-urls_full_api_key <- paste(urls_full, api_key, sep = "")
-# creates folder and downloads all images
+\# Ogden
+
+og_data \<- read.csv("\~/GitHub/Housing/complete links/ogden_urls.csv")
+
+urls_start \<- og_data\[, 1\]
+
+urls_full \<- paste(urls_start, "&key=", sep = "")
+
+urls_full_api_key \<- paste(urls_full, api_key, sep = "")
+
+\# creates folder and downloads all images
+
 dir.create("ogden_google_images_folder")
+
 for(i in seq_along(urls_full_api_key)) {
-  file_path <- file.path("ogden_google_images_folder", paste0("G_OG_", og_data[i,6], "_.png"))
-  download.file(urls_full_api_key[i], file_path, mode = "wb")
-  print(file_path)
-  print(i)
+
+___ file_path \<- file.path("ogden_google_images_folder", paste0("G_OG\_", og_data\[i,6\], "\_.png"))
+
+___ download.file(urls_full_api_key\[i\], file_path, mode = "wb")
+
+___ print(file_path)
+
+___ print(i)
+
 }
-```
+
+The only changes to the above code is that you must change the path to your CSV file, where og_data\[, num\] the number must be changed to the column in the CSV with the full url if it is not in the first column already and the second instance changed to where the address column is, names of image export files if you use a different city, source or city within paste0 (convention is source_city_address\_ where source is G Google, Z Zillow, Etc and city is OG Ogden, G Grundy Center, etc), and finally you must add an api_key variable with your own api key. In R Studio you can run just the variable name and it will save into your environment. Make sure to delete the API Key from your code before pushing it somewhere public such as GitHub.
 
 Some common errors with the images coming in are as follows: If Google does not have an image it will give you an image does not exist image but this should be easily identified by our AI model through training. Quick note if you retrain the models I show later in this guide only put 2-3 of these error images as to not throw off the model, having 50 or so will make the model think that image has a very high correlation. Next I have had an odd issue where the same image will be used for multiple addresses. This is quite weird because I do not know where the image is getting pulled from. Maybe there is a default image that is getting pulled somehow? But it is not just one image for Grundy Center which has about 3,500 images we pulled I saw anywhere from 10-20% of the images were duplicates with different addresses. There were probably 8-10 different images that were duplicated for different images so this is a big problem that doesn't always happen but is a mystery to me why this happens. But hey 80-90% good images is a passing grade.
 
 ## Building a Binary Image Classification AI Model
 
+These are the two videos I used from Nicholas Renotte [Video 1](https://www.youtube.com/watch?v=19LQRx78QVU&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=1&ab_channel=NicholasRenotte) [Video 2](https://www.youtube.com/watch?v=jztwpsIzEGc&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=2&ab_channel=NicholasRenotte). The first video shows how to set up Jupyter Labs while the second video explains how his model works. I copied his code but altered it a little for the binary models but quite a bit for the multi model classifications.
+
+To be honest I think the model in the next section can handle binary scenarios but because I do not fully trust that theory so I am going to show the code for the binary models as it is a little different. When I made my first model I used Jupyter Lab which for an experienced programmer it wasn't horrible to set up the environment but for my teams sake and future DSPG members we switched to [Google Colab](https://colab.research.google.com/). Google Colab is an online resource that can be edited by multiple users just as other Google applications.
+
+Access to entire projects are available through our AI Housing team [GitHub](https://github.com/DSPG-2023/Housing) but I will walk through the house_present.ipynb file. I highly recommend going to our Housing repository in models_algorithm to look at models rather than this guide (download and open in Google Colab) as I think it is much easier to read and follow. First off, ipynb is the extension for Jupyter Notebooks which is python code written in individual cells so that you can run cell by cell rather than the entire program. This is helpful for testing and minor fixes but I suppose these can be written in normal .py (python) files. 
+
+Make sure tensorflow, opencv, and matplotlib are downloaded. You can download these libraries with pip install tensorflow. !pip list will display a list of downloaded libraries to check if these are properly downloaded. This next step is vital for all Colab codes:
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+%cd "/content/drive/MyDrive/Colab Notebooks/house_present_model"
+
+The from section will connect Google drive to Colab. I will explain where images go in the Training the Model section below but keep in mind you will need to download your images to Google drive to train the model. The third line of code is the path to my house_present_model within Google drive so you will need to replace that path with your path to the folder which holds the Google Colab ipynb file and data images. You do not have to worry about this for now follow along with the rest of the code then skip to Sorting Images then Training the Model section to run the code.
+
+I have my imports scattered through the rest of the document but I will list them all now:
+
+import tensorflow as tf
+
+import os
+
+import cv2
+
+import imghdr
+
+from matplotlib import pyplot as plt
+
+import numpy as np
+
+from keras.models import Sequential
+
+from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
+
+from keras.metrics import Precision, Recall, BinaryAccuracy
+
+from keras.models import load_model
+
+As you can see these models are built with Tensorflow and Keras. Next we grab the images which will be in the data folder.
+
+data_dir = os.getcwd()+'/data'
+
+We want to remove bad images from our image dataset. First go through and delete all images 10 KB and smaller, then delete any files that are not images.
+
+image_exts = ['jpeg','jpg', 'png']
+
+for image_class in os.listdir(data_dir):
+
+___ for image in os.listdir(os.path.join(data_dir, image_class)):
+
+___ ___ image_path = os.path.join(data_dir, image_class, image)
+
+___ ___ try:
+
+___ ___ ___ img = cv2.imread(image_path)
+
+___ ___ ___ tip = imghdr.what(image_path)
+
+___ ___ ___ if tip not in image_exts:
+
+___ ___ ___ ___ print('Image not in ext list {}'.format(image_path))
+
+___ ___ ___ ___ os.remove(image_path)
+
+___ ___ ___ except Exception as e:
+
+___ ___ ___ ___ print('Issue with image {}'.format(image_path))
+
+___ ___ ___ ___ os.remove(image_path)
+
+At this point most of the images we have will be fine to use for training the model. To see a sample of the images you can use plt.imshow(img) or plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB)) followed by plt.show() to see a properly colored version.
+
+
+Next we need to separate the data into 0 or 1. The house_present model for example, I have two folders, one with images with no house and one with house images. The model will predict a decimal between 0 and 1 so if the model predicts .79 it will belong to the second category of house images. Below will show a sample of what this looks like.
+
+data = tf.keras.utils.image_dataset_from_directory('data')
+
+data_iterator = data.as_numpy_iterator()
+
+batch = data_iterator.next()
+
+fig, ax = plt.subplots(ncols=4, figsize=(20,20))
+
+for idx, img in enumerate(batch[0][:4]):
+
+___ ax[idx].imshow(img.astype(int))
+
+___ ax[idx].title.set_text(batch[1][idx])
+
+![](11colab_bin.png)
+
+data = data.map(lambda x,y: (x/255, y))
+
+data.as_numpy_iterator().next()
+
+Next we separate the data into training, validation and testing which should be separated by 70%, 20%, 10%. len(data) will show how many images will be used in each train. For my last run I had 7 images.
+
+train_size = int(len(data)*.7)
+val_size = int(len(data)*.2)+1
+test_size = int(len(data)*.1)+1
+
+train_size+val_size+test_size
+
+The last line should be equal to len(data) if test or validation is 0 you need to add numbers to the end as I did above. There is a better solution in the following AI model section that I will replace this with if I remember. Next we build the layers of the Neural Network.
+
+model = Sequential()
+
+model.add(Conv2D(16, (3,3), 1, activation='relu', input_shape=(256,256,3)))
+
+model.add(MaxPooling2D())
+
+model.add(Conv2D(32, (3,3), 1, activation='relu'))
+
+model.add(MaxPooling2D())
+
+model.add(Conv2D(16, (3,3), 1, activation='relu'))
+
+model.add(MaxPooling2D())
+
+model.add(Flatten())
+
+model.add(Dense(256, activation='relu'))
+
+model.add(Dense(1, activation='sigmoid'))
+
+model.compile('adam', loss=tf.losses.BinaryCrossentropy(), metrics=['accuracy'])
+
+model.summary()
+
+Using the model that was just created now it needs to be trained.
+
+logdir='logs'
+
+tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=logdir)
+
+AUTOTUNE = tf.data.AUTOTUNE
+
+train_ds = train.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
+val_ds = val.cache().prefetch(buffer_size=AUTOTUNE)
+
+hist = model.fit(train_ds, epochs=20, validation_data=val_ds, callbacks=[tensorboard_callback])
+
+Next we graph the loss and accuracy of the model.
+
+fig = plt.figure()
+
+plt.plot(hist.history['loss'], color='teal', label='loss')
+
+plt.plot(hist.history['val_loss'], color='orange', label='val_loss')
+
+fig.suptitle('Loss', fontsize=20)
+
+plt.legend(loc="upper left")
+
+plt.show()
+
+fig = plt.figure()
+
+plt.plot(hist.history['accuracy'], color='teal', label='accuracy')
+
+plt.plot(hist.history['val_accuracy'], color='orange', label='val_accuracy')
+
+fig.suptitle('Accuracy', fontsize=20)
+
+plt.legend(loc="upper left")
+
+plt.show()
+
+![](12colab_acc.png)
+
+Then we can evaluate the quality of the model
+
+pre = Precision()
+
+re = Recall()
+
+acc = BinaryAccuracy()
+
+for batch in test.as_numpy_iterator():
+
+__ X, y = batch
+
+__ yhat = model.predict(X)
+
+__  print(yhat)
+
+__  pre.update_state(y, yhat)
+
+__  re.update_state(y, yhat)
+
+__  acc.update_state(y, yhat)
+
+print(pre.result(), re.result(), acc.result())
+
+print(f'Precision:{pre.result().numpy()}, Recall:{re.result().numpy()}, Accuracy:{acc.result().numpy()}')
+
+Then we test the model to see that it works visually. The directory in the following code refers to an image that I chose to test on in the same directory as the ipynb file and the data folder.
+
+img = cv2.imread('/content/drive/MyDrive/Colab Notebooks/house_present_model/data/Copy of G_G_108 E AVE_.png')
+
+resize = tf.image.resize(img, (256,256))
+
+plt.imshow(resize.numpy().astype(int))
+
+plt.show()
+
+yhat = model.predict(np.expand_dims(resize/255, 0))
+
+yhat
+
+if yhat > 0.5:
+
+__ print(f'No house present')
+
+else:
+
+__ print(f'House present')
+
+Finally we can save the model. Rename the h5 file to whatever model you are making and it will save to a new folder named models.
+
+model.save(os.path.join('models','house_present_classifier.h5'))
+
+
+
 ## Building a Multi-Category Image Classification AI Model
 
-## Sorting Images 
+## Sorting Images
+
+This step follows the Google scraping section directly. Sorting images is a very time consuming process and we have not found a quicker way than manually sorting image by image. I have tried to make this process as efficient as possible with the following method. First make a copy of the image folder so that you have the original images if you need to sort multiple ways. Next go to the image folder and make folders for each sorting method you have. Below is an example of what it looked like while I was sorting for siding. I had a good siding, chipped paint, and poor folder which would be used for training the model. I also had an excess good folder and a delete folder. The excess good folder took a bulk of the good houses because you do not want your data amounts to be too uneven. If you have too many duplicates or too many images in one folder this can cause inaccuracies in the model's predictions. The delete folder made the sorting go quicker to just throw images into that folder and delete them later rather than deleting bad images as they come.
+
+![](sorting_pics.png)
+
+Make a new folder named data and put all of the categories into that folder. The data folder needs to go into the same directory as the ipynb file in google drive. As shown above the data folder needs to be accessible by Google Colab so that it can determine amount of categories and sort accordingly.
 
 ## Training the Model
 
+If you have a ipynb file set up to create a model and you have sorted images into their respective folders, this step is easy. The following image should be similar to how your directory should look. After linking your Google Colab this left panel will show up with your folders, it is necessary for your data folder to be in the same directory as your ipynb file in Google Drive.
+
+![](14directory_colab.png)
+
+Once your sure the images are accessible for the model all you have to do is run all of the cells. There is an option to run all but I recommend running cell by cell to address errors as they appear. The final line will return the trained model into a new folder named models. You can download the h5 file (the trained model) from Google drive to your local machine to use them in the algorithm I wrote to evaluate images.
+
 ## Utilizing a Trained AI Model
+
+Make sure you have an IDE that can run python code. I recommend Visual Studio as it can run many languages and has libraries to make python look nice but pycharm is another popular python IDE.
+
+### Sorting Image Folder
+
+Before using the python scripts to run your models we need to sort the images from the original Ogden folder into a format that the function can understand. The way I planned the storage of images is as follows: there is a parent folder that holds all images, within the parent folder there are folders for each individual city, and within city folders are folders named by all of the addresses in those cities, and finally within the address folders are images for each address from different sources. Inside of the housing channel folder models_algorithm exists a file image_folder_sorter.py. Each city that I sorted has it's own algorithm for sorting because they are in different folders going to different folders. I will create one for Ogden below.
+
+img_loc = os.path.expanduser("~/Documents/downloaded google images/ogden_google_images_folder")
+
+parent_folder = os.path.expanduser("~/Documents/parent_folder_holder")
+
+address_folders = os.path.expanduser("~/Documents/parent_folder_holder/ogden_address_image")
+
+files = os.listdir(img_loc)
+
+for img in files:
+
+__ address = img.split("_")[2].strip()
+    
+__ new_address_folder = os.path.join(parent_folder, address_folders, address)
+    
+__  os.makedirs(new_address_folder, exist_ok=True)
+    
+__  source_path = os.path.join(img_loc, img)
+    
+__  destination_path = os.path.join(new_address_folder, img)
+    
+__  shutil.copyfile(source_path, destination_path)
+
+As shown above this algorithm grabs the Ogden image folder then copies it to another folder in which it is sorted by address (which is given by name of each image). Make sure to rename the directories if you have different folder names.
+
+![](15city_addresses.png)
+
+![](16address_folders.png)
+
+I hope the following graphic is helpful in understanding how the images are stored.
+
+![](17folder_visual.png)
+
+### Running Models
+
+In this section I will explain how to use your AI model to evaluate addresses purely through using my python scripts.
+
+#### How the Program Works
+I have two files, city_evaluator.py and house_evaluator.py. city_evaluator reads in images from the method stated above, it navigates to a parent folder which is full of cities, you can navigate to one of these cities to evaluate the images present in it's folders. For each address folder there may be multiple images of the same address but each of these folders are fed to house_evaluator. 
+
+house_evaluator has three models at the beginning, house_present which identifies if there is a house present in an image, clear_image which identifies if there is a clear image of the house (whether it is obstructed or clear), and multiple_houses which identifies if there are multiple images in the picture. These image models were made with the intention of filtering out bad images. If no houses remain the program returns with everything as false. If two good images exist the program randomly selects one of the two.
+
+If an address has an identified good image we will then run it against all our attribute models. Currently there is a vegetation model, siding model, gutter model, and roof model. All of these models need to be better trained to become more accurate but right now serve as good examples of how to build and use AI models for this project. The ipynb files are located in the same location as the h5 files which can be downloaded and opened in Google Colab. 
+
+Finally the program returns multiple variables to city_evaluator including whether there is a clear image, name of the test failed if it did, name of image used, whether image was randomly selected, vegetation, siding, gutter, and roofing predictions along with percent confidence. I will discuss how city_evaluator writes this information to a CSV file in the final section.
+
+#### How to Add Your Model and Other Tweaks
+
+I'm going to list everything you can alter as we go through adding the model here in case anything needs adjusted. This is starting in the house_evaluator.py file. First this screenshot is of the image names and image variable holders being initialized. If you gather images from sources other than what is labeled below you will need to add a variable everyplace these show up. This shouldn't be too difficult, I only count four locations that you would need to add an image holder variable and a name variable.
+
+![](18file_names.png)
+
+You can skip past all of the house image quality models to what is now about line 220 which is right after the random picker operation. Lets say your new model identifies window quality, if no image remains then you need to add your variable to the list of variables returned here with windows as None and window confidence as 0
+
+![](19no_image.png)
+
+Next scroll past all of the next models (vegetation, siding, gutter, and roof) I left a spot for your window model if this isn't a hypothetical situation :). Whether your model is binary or has multiple labels changes how you must implement it. For a binary model you can look at the house_present model and the multiple_house model as an example while for a multi option model you can look at any of the attribute models. Below are screenshots of house_present followed by the siding_model, house_present may be misleading but keep in mind it needed to check if an image was present and delete or add so your attribute model will be altered a little from this code and more similair to the start and end of the siding model.
+
+![](20house_present_ex.png)
+
+![](21siding_ex.png)
+
+Finally add your models variables to the final return statement.
+
+![](22final_return.png)
+
+Navigate to city_evaluator.py and update the three spots where it handles variables. This should be simple just copy and paste the lines and change the variable name. An example of the code snippets below:
+1. clear_image = attributes.get("clear_image")
+
+2. 
+
+if ('clear_image' in list(df.columns)):
+
+__ pass
+
+else:
+
+__ df['clear_image'] = None
+
+3. df.at[i,'clear_image'] = clear_image
 
 ## Exporting Predictions to a CSV on Address
 
+city_evaluator.py already does the work for you, you just need to add links. First double check that all the variables mentioned in the last section is updated or the new values will not be pulled and written. The folder paths you need to change is the path to the parent folder that contains all of the images (below I show Ogden's links), then you need to make a csv to hold all of your information. I do not think there is a generic database csv file we have but all of the categories can be copied from an existing one. At minimum the csv file must have all of the addresses from the csv file used to create Google urls or nothing will print.
 
+![](23csv_start.png)
 
+Then update the following lines with your city info and place them with the others in city_evaluator. You can see I just uncomment whichever city I want to run.
 
+main_folder = os.path.expanduser("~/Documents/parent_folder_holder/ogden_address_image")
 
+df = pd.read_csv(os.path.expanduser('~/Documents/GitHub/Housing/Housing Databases/ogden_database.csv'))
 
+df.to_csv(os.path.expanduser('~/Documents/GitHub/Housing/Housing Databases/ogden_database.csv'), index = False)
 
+Now the fun part. If everything worked correctly all you have to do is run city_evaluator and wait for quite a while for all the images to be processed. The terminal will look like below for while it runs through the models.
+
+![](24waiting.png)
+
+Ogden was smaller so ran a little faster but here is the final result of the current models I have evaluating Ogden:
+
+![](25complete.png)
+
+## Conclusion
+I think this method goes pretty quick overall. Scraping addresses and cleaning goes quick once you have the functions to clean the data, AI models take a while to understand at first but after one or two the process becomes quicker, and implementing models and printing to CSV files take a while to code the first time but alterations are easy. The worst part of this process is sorting images for models. It can take hours and you may have to do it multiple times to increase the accuracy of models.
+
+Steps for the rest of this project not included in this guide:
+
+I will implement a roof model 
+
+I will better train the current models
+
+But the best part to go find once it's done is AI heatmaps which are images that show where in an image a computer is most influenced to make a prediction.
