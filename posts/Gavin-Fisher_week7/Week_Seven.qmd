@@ -1,0 +1,45 @@
+---
+title: "Week Seven Blog"
+author: "Gavin D. Fisher"
+date: "2023-06-29"
+categories: ["Week Seven", "AI Models", "Python", "Excel"]
+---
+
+![](parent_folder.png)
+
+![](address_image_folder.png)
+
+![](image_not_found.png)
+
+![](new_hampton_download.png)
+
+![](image_storage.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
