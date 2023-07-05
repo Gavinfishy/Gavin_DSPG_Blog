@@ -5,6 +5,7 @@ date: "2023-06-27"
 categories: ["Week Seven", "AI Models", "Python", "Excel", "R", "Guide", "Web Scraping", "Google Colab"]
 execute:
   echo: false
+toc: TRUE
 ---
 
 # How to Collect Addresses, Images, and Evaluate Those Images Using AI Models
@@ -13,9 +14,9 @@ This will be a full guide on how to recreate what AI housing team has done this 
 
 ## Address Collection and Cleaning
 
-First we need to go to Beacon to try and collect a list of addresses. The following link will bring you to Boone County and you need to scroll in on Ogden (West/center). [Beacon Map View](https://beacon.schneidercorp.com/Application.aspx?AppID=84&LayerID=795&PageTypeID=1&PageID=913)
+First we need to go to Beacon to try and collect a list of addresses. The following link will bring you to Boone County and you need to scroll in on Ogden (West/center). [Beacon Map View](https://beacon.schneidercorp.com/Application.aspx?AppID=84&LayerID=795&PageTypeID=1&PageID=913){target="_blank"}
 
-We found a tool called [Instant Data Scraper](https://chrome.google.com/webstore/detail/instant-data-scraper/ofaokhiedipichpaobibbnahnkdoiiah) that you need for this process. An alternative to this is badly needed as you will see soon, but this application worked for the time being when we had no prior web scraping experience yet. DSPG students for summer of 2024, I beg you to try and scrape Beacon with your own spider before using this tool to save yourself from the cleaning you have to do.
+We found a tool called [Instant Data Scraper](https://chrome.google.com/webstore/detail/instant-data-scraper/ofaokhiedipichpaobibbnahnkdoiiah){target="_blank"} that you need for this process. An alternative to this is badly needed as you will see soon, but this application worked for the time being when we had no prior web scraping experience yet. DSPG students for summer of 2024, I beg you to try and scrape Beacon with your own spider before using this tool to save yourself from the cleaning you have to do.
 
 Below I display an image of the Beacon interface then an image zoomed in on Ogden.
 
@@ -109,11 +110,11 @@ Some common errors with the images coming in are as follows: If Google does not 
 
 ## Building a Binary Image Classification AI Model
 
-These are the two videos I used from Nicholas Renotte [Video 1](https://www.youtube.com/watch?v=19LQRx78QVU&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=1&ab_channel=NicholasRenotte) [Video 2](https://www.youtube.com/watch?v=jztwpsIzEGc&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=2&ab_channel=NicholasRenotte). The first video shows how to set up Jupyter Labs while the second video explains how his model works. I copied his code but altered it a little for the binary models but quite a bit for the multi model classifications.
+These are the two videos I used from Nicholas Renotte [Video 1](https://www.youtube.com/watch?v=19LQRx78QVU&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=1&ab_channel=NicholasRenotte){target="_blank"} [Video 2](https://www.youtube.com/watch?v=jztwpsIzEGc&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=2&ab_channel=NicholasRenotte){target="_blank"}. The first video shows how to set up Jupyter Labs while the second video explains how his model works. I copied his code but altered it a little for the binary models but quite a bit for the multi model classifications.
 
-To be honest I think the model in the next section can handle binary scenarios but because I do not fully trust that theory so I am going to show the code for the binary models as it is a little different. When I made my first model I used Jupyter Lab which for an experienced programmer it wasn't horrible to set up the environment but for my teams sake and future DSPG members we switched to [Google Colab](https://colab.research.google.com/). Google Colab is an online resource that can be edited by multiple users just as other Google applications.
+To be honest I think the model in the next section can handle binary scenarios but because I do not fully trust that theory so I am going to show the code for the binary models as it is a little different. When I made my first model I used Jupyter Lab which for an experienced programmer it wasn't horrible to set up the environment but for my teams sake and future DSPG members we switched to [Google Colab](https://colab.research.google.com/){target="_blank"}. Google Colab is an online resource that can be edited by multiple users just as other Google applications.
 
-Access to entire projects are available through our AI Housing team [GitHub](https://github.com/DSPG-2023/Housing) but I will walk through the house_present.ipynb file. I highly recommend going to our Housing repository in models_algorithm to look at models rather than this guide (download and open in Google Colab) as I think it is much easier to read and follow. First off, ipynb is the extension for Jupyter Notebooks which is python code written in individual cells so that you can run cell by cell rather than the entire program. This is helpful for testing and minor fixes but I suppose these can be written in normal .py (python) files. 
+Access to entire projects are available through our AI Housing team [GitHub](https://github.com/DSPG-2023/Housing){target="_blank"} but I will walk through the house_present.ipynb file. I highly recommend going to our Housing repository in models_algorithm to look at models rather than this guide (download and open in Google Colab) as I think it is much easier to read and follow. First off, ipynb is the extension for Jupyter Notebooks which is python code written in individual cells so that you can run cell by cell rather than the entire program. This is helpful for testing and minor fixes but I suppose these can be written in normal .py (python) files. 
 
 Make sure tensorflow, opencv, and matplotlib are downloaded. You can download these libraries with pip install tensorflow. !pip list will display a list of downloaded libraries to check if these are properly downloaded. This next step is vital for all Colab codes:
 

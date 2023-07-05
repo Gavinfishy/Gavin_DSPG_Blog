@@ -65,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -143,7 +143,31 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-to-collect-addresses-images-and-evaluate-those-images-using-ai-models" id="toc-how-to-collect-addresses-images-and-evaluate-those-images-using-ai-models" class="nav-link active" data-scroll-target="#how-to-collect-addresses-images-and-evaluate-those-images-using-ai-models">How to Collect Addresses, Images, and Evaluate Those Images Using AI Models</a>
+  <ul class="collapse">
+  <li><a href="#address-collection-and-cleaning" id="toc-address-collection-and-cleaning" class="nav-link" data-scroll-target="#address-collection-and-cleaning">Address Collection and Cleaning</a></li>
+  <li><a href="#creating-google-api-links" id="toc-creating-google-api-links" class="nav-link" data-scroll-target="#creating-google-api-links">Creating Google API Links</a></li>
+  <li><a href="#scrape-google-images" id="toc-scrape-google-images" class="nav-link" data-scroll-target="#scrape-google-images">Scrape Google Images</a></li>
+  <li><a href="#building-a-binary-image-classification-ai-model" id="toc-building-a-binary-image-classification-ai-model" class="nav-link" data-scroll-target="#building-a-binary-image-classification-ai-model">Building a Binary Image Classification AI Model</a></li>
+  <li><a href="#building-a-multi-category-image-classification-ai-model" id="toc-building-a-multi-category-image-classification-ai-model" class="nav-link" data-scroll-target="#building-a-multi-category-image-classification-ai-model">Building a Multi-Category Image Classification AI Model</a></li>
+  <li><a href="#sorting-images" id="toc-sorting-images" class="nav-link" data-scroll-target="#sorting-images">Sorting Images</a></li>
+  <li><a href="#training-the-model" id="toc-training-the-model" class="nav-link" data-scroll-target="#training-the-model">Training the Model</a></li>
+  <li><a href="#utilizing-a-trained-ai-model" id="toc-utilizing-a-trained-ai-model" class="nav-link" data-scroll-target="#utilizing-a-trained-ai-model">Utilizing a Trained AI Model</a>
+  <ul class="collapse">
+  <li><a href="#sorting-image-folder" id="toc-sorting-image-folder" class="nav-link" data-scroll-target="#sorting-image-folder">Sorting Image Folder</a></li>
+  <li><a href="#running-models" id="toc-running-models" class="nav-link" data-scroll-target="#running-models">Running Models</a></li>
+  </ul></li>
+  <li><a href="#exporting-predictions-to-a-csv-on-address" id="toc-exporting-predictions-to-a-csv-on-address" class="nav-link" data-scroll-target="#exporting-predictions-to-a-csv-on-address">Exporting Predictions to a CSV on Address</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -155,8 +179,8 @@ ul.task-list li input[type="checkbox"] {
 <p>This will be a full guide on how to recreate what AI housing team has done this summer using Ogden IA as an example.</p>
 <section id="address-collection-and-cleaning" class="level2">
 <h2 class="anchored" data-anchor-id="address-collection-and-cleaning">Address Collection and Cleaning</h2>
-<p>First we need to go to Beacon to try and collect a list of addresses. The following link will bring you to Boone County and you need to scroll in on Ogden (West/center). <a href="https://beacon.schneidercorp.com/Application.aspx?AppID=84&amp;LayerID=795&amp;PageTypeID=1&amp;PageID=913">Beacon Map View</a></p>
-<p>We found a tool called <a href="https://chrome.google.com/webstore/detail/instant-data-scraper/ofaokhiedipichpaobibbnahnkdoiiah">Instant Data Scraper</a> that you need for this process. An alternative to this is badly needed as you will see soon, but this application worked for the time being when we had no prior web scraping experience yet. DSPG students for summer of 2024, I beg you to try and scrape Beacon with your own spider before using this tool to save yourself from the cleaning you have to do.</p>
+<p>First we need to go to Beacon to try and collect a list of addresses. The following link will bring you to Boone County and you need to scroll in on Ogden (West/center). <a href="https://beacon.schneidercorp.com/Application.aspx?AppID=84&amp;LayerID=795&amp;PageTypeID=1&amp;PageID=913" target="_blank">Beacon Map View</a></p>
+<p>We found a tool called <a href="https://chrome.google.com/webstore/detail/instant-data-scraper/ofaokhiedipichpaobibbnahnkdoiiah" target="_blank">Instant Data Scraper</a> that you need for this process. An alternative to this is badly needed as you will see soon, but this application worked for the time being when we had no prior web scraping experience yet. DSPG students for summer of 2024, I beg you to try and scrape Beacon with your own spider before using this tool to save yourself from the cleaning you have to do.</p>
 <p>Below I display an image of the Beacon interface then an image zoomed in on Ogden.</p>
 <p><img src="1beacon_main.png" class="img-fluid"></p>
 <p><img src="2beacon_zoom.png" class="img-fluid"></p>
@@ -209,9 +233,9 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="building-a-binary-image-classification-ai-model" class="level2">
 <h2 class="anchored" data-anchor-id="building-a-binary-image-classification-ai-model">Building a Binary Image Classification AI Model</h2>
-<p>These are the two videos I used from Nicholas Renotte <a href="https://www.youtube.com/watch?v=19LQRx78QVU&amp;list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&amp;index=1&amp;ab_channel=NicholasRenotte">Video 1</a> <a href="https://www.youtube.com/watch?v=jztwpsIzEGc&amp;list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&amp;index=2&amp;ab_channel=NicholasRenotte">Video 2</a>. The first video shows how to set up Jupyter Labs while the second video explains how his model works. I copied his code but altered it a little for the binary models but quite a bit for the multi model classifications.</p>
-<p>To be honest I think the model in the next section can handle binary scenarios but because I do not fully trust that theory so I am going to show the code for the binary models as it is a little different. When I made my first model I used Jupyter Lab which for an experienced programmer it wasn’t horrible to set up the environment but for my teams sake and future DSPG members we switched to <a href="https://colab.research.google.com/">Google Colab</a>. Google Colab is an online resource that can be edited by multiple users just as other Google applications.</p>
-<p>Access to entire projects are available through our AI Housing team <a href="https://github.com/DSPG-2023/Housing">GitHub</a> but I will walk through the house_present.ipynb file. I highly recommend going to our Housing repository in models_algorithm to look at models rather than this guide (download and open in Google Colab) as I think it is much easier to read and follow. First off, ipynb is the extension for Jupyter Notebooks which is python code written in individual cells so that you can run cell by cell rather than the entire program. This is helpful for testing and minor fixes but I suppose these can be written in normal .py (python) files.</p>
+<p>These are the two videos I used from Nicholas Renotte <a href="https://www.youtube.com/watch?v=19LQRx78QVU&amp;list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&amp;index=1&amp;ab_channel=NicholasRenotte" target="_blank">Video 1</a> <a href="https://www.youtube.com/watch?v=jztwpsIzEGc&amp;list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&amp;index=2&amp;ab_channel=NicholasRenotte" target="_blank">Video 2</a>. The first video shows how to set up Jupyter Labs while the second video explains how his model works. I copied his code but altered it a little for the binary models but quite a bit for the multi model classifications.</p>
+<p>To be honest I think the model in the next section can handle binary scenarios but because I do not fully trust that theory so I am going to show the code for the binary models as it is a little different. When I made my first model I used Jupyter Lab which for an experienced programmer it wasn’t horrible to set up the environment but for my teams sake and future DSPG members we switched to <a href="https://colab.research.google.com/" target="_blank">Google Colab</a>. Google Colab is an online resource that can be edited by multiple users just as other Google applications.</p>
+<p>Access to entire projects are available through our AI Housing team <a href="https://github.com/DSPG-2023/Housing" target="_blank">GitHub</a> but I will walk through the house_present.ipynb file. I highly recommend going to our Housing repository in models_algorithm to look at models rather than this guide (download and open in Google Colab) as I think it is much easier to read and follow. First off, ipynb is the extension for Jupyter Notebooks which is python code written in individual cells so that you can run cell by cell rather than the entire program. This is helpful for testing and minor fixes but I suppose these can be written in normal .py (python) files.</p>
 <p>Make sure tensorflow, opencv, and matplotlib are downloaded. You can download these libraries with pip install tensorflow. !pip list will display a list of downloaded libraries to check if these are properly downloaded. This next step is vital for all Colab codes:</p>
 <p>from google.colab import drive drive.mount(‘/content/drive’)</p>
 <p>%cd “/content/drive/MyDrive/Colab Notebooks/house_present_model”</p>
