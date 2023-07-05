@@ -334,7 +334,170 @@ model.save(os.path.join('models','house_present_classifier.h5'))
 
 ## Building a Multi-Category Image Classification AI Model
 
-In progress ...
+This section is a review of the model that classifies an image when there are three or more categories. This model can also handle only two categories and may work better than the previous model. This model was somewhat based on the prior binary model but was just adjusted to handle more labels. This is also done on Google Colab so we start with mounting to Google Drive.
+
+from google.colab import drive
+
+drive.mount('/content/drive')
+
+Then we load in the images the same way. Make sure the images you will be using is in Google Drive in whatever directory you insert below.
+
+%cd "/content/drive/MyDrive/Colab Notebooks/DSPG Models/vegetation_quality_model"
+
+data_dir = os.getcwd()+'/data'
+
+We then set the batch size and image size
+
+batch_size = 32
+
+img_height = 180
+
+img_width = 180
+
+data = tf.keras.utils.image_dataset_from_directory(
+
+__ data_dir,
+
+__ image_size=(img_height, img_width),
+
+__ batch_size=batch_size)
+
+We then divide the data as 70% testing, 20% validation, and 10% testing.
+
+train_size = int(len(data)*.7)
+
+val_size = int(len(data)*.2)
+
+test_size = int(len(data)-train_size-val_size)
+
+Next we show some of the images in the data set
+
+![](display_img.png)
+
+This code makes the training process go very quickly
+
+AUTOTUNE = tf.data.AUTOTUNE
+
+train_ds = train.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
+
+val_ds = val.cache().prefetch(buffer_size=AUTOTUNE)
+
+Then we build the neural network.
+
+num_classes = len(class_names)
+
+model = Sequential([
+
+__ layers.Rescaling(1./255, input_shape=(img_height, img_width, 3)),
+
+__ layers.Conv2D(16, 3, padding='same', activation='relu'),
+
+__ layers.MaxPooling2D(),
+
+__ layers.Conv2D(32, 3, padding='same', activation='relu'),
+
+__ layers.MaxPooling2D(),
+
+__ layers.Conv2D(64, 3, padding='same', activation='relu'),
+
+__ layers.MaxPooling2D(),
+
+__ layers.Flatten(),
+
+__ layers.Dense(128, activation='relu'),
+
+__ layers.Dense(num_classes, activation='softmax')
+
+])
+
+model.compile(optimizer='adam',
+
+__ loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
+
+__ metrics=['accuracy'])
+
+Then we train the model.
+
+epochs=10
+
+with tf.device('/device:GPU:0'):
+
+__ history = model.fit(
+
+____ train,
+
+____ validation_data=val,
+
+____ epochs=epochs)
+
+Then we print the Accuracy and Loss
+
+acc = history.history['accuracy']
+
+val_acc = history.history['val_accuracy']
+
+loss = history.history['loss']
+
+val_loss = history.history['val_loss']
+
+epochs_range = range(epochs)
+
+plt.figure(figsize=(8, 8))
+
+plt.subplot(1, 2, 1)
+
+plt.plot(epochs_range, acc, label='Training Accuracy')
+
+plt.plot(epochs_range, val_acc, label='Validation Accuracy')
+
+plt.legend(loc='lower right')
+
+plt.title('Training and Validation Accuracy')
+
+plt.subplot(1, 2, 2)
+
+plt.plot(epochs_range, loss, label='Training Loss')
+
+plt.plot(epochs_range, val_loss, label='Validation Loss')
+
+plt.legend(loc='upper right')
+
+plt.title('Training and Validation Loss')
+
+plt.show()
+
+Then we evaluate the quality of the model.
+
+pre = Precision()
+
+re = Recall()
+
+acc = Accuracy()
+
+for batch in test.as_numpy_iterator():
+
+__ X, y = batch
+
+__ yhat = model.predict(X)
+
+__ yhat = np.array(tf.math.argmax(yhat,axis=1))
+
+__  print(y)
+
+__  print(yhat)
+
+__  pre.update_state(y, yhat)
+
+__  re.update_state(y, yhat)
+
+__  acc.update_state(y, yhat)
+
+print(f'Precision:{pre.result().numpy()}, Recall:{re.result().numpy()}, Accuracy:{acc.result().numpy()}')
+
+model.save(os.path.join('models','vegetation_quality_classifier.h5'))
+
+Again this is much easier to just go into the GitHub for housing and find these models. By the time of finishing this section I now have two more models that produce SHAP and CAM images which take multiple labels to go find towards the end of this project.
+
 
 ## Sorting Images
 
