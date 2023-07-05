@@ -1,0 +1,24 @@
+---
+title: "Week Eight Blog"
+author: "Gavin D. Fisher"
+date: "2023-07-08"
+categories: ["Week Eight", "Excel"]
+---
+
+First I took a sample of the data bases to see how accurate the models were predicting. I used about 25 addresses from each source (Grundy Center, Independence, New Hampton, Slater, and Ogden) which totaled to 118 addresses after removing the empty evaluations from New Hampton. This is a very small sample considering we have a couple thousand addresses in our database. I went one by one checking whether each attribute was predicted properly for each image.
+
+Each model returns it's confidence of each prediction it makes so I took the average as follows, vegetation: 43.2%, siding: 37.02%, gutter: 65.07%, roof: 54.89%. Again, this shows the confidence of how sure the model is of it's prediction so for example on average the gutter model is 65% sure on average that it's prediction is correct.
+
+Next I assigned a 0 for false or 1 for true for each model's prediction on whether it's guess was accurate compared to the image I looked at. This gave me a percent of accurate guesses in the sample data as follows, house present model: 84.62%, vegetation model: 86.42%, siding: 3.7%, gutter: 82.72%, roof: 88.89%. You may have noticed that the siding model only had a 3.7% accuracy rate which is what caused this sample to be evaluated. I believe that the siding model's real percentage is 96.3% guessed correctly but that the program to run the models returns the wrong prediction from the model. This should be a quick fix then all of the databases need to be updated. Back to the rest of the models, the percentages are pretty high but I do not think that this is due to the accuracy of the models. I think the models are predicting that the attributes are in good condition most of the time and it just so happens that most houses do not have issues. For example the gutter model had 82.72% accuracy from the sample but many of the images gutters were barely visible which leads me to believe that the model is looking at other house characteristics than actually looking for gutters.
+
+Next some issues I found with this sample:
+
+1.  The roofing model predicted bad roof when no roof is visible. This may still be desirable because gutter does the same thing where is predicts bad gutter when none is visible in the image
+2.  A small blur spot in the top of the image caused the image to be marked as no house present
+3.  Rand select chose an image of a house from a street corner (Google) rather than the front of a house (Winvest) which means the house present model should have removed the street corner image
+4.  Very visible house marked no house present
+5.  Cornfield marked as house present
+6.  Duplicated addresses
+7.  Image of the inside of a store marked house present
+
+I wrote comments of every issue in one of the sample data csv columns.

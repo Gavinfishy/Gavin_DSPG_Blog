@@ -28,5 +28,3 @@ An update from last week was that instead of printing to a test file I am now ab
 I made a full guide of how to recreate the results of this project code wise [here](https://gavinfishy.github.io/Gavin_DSPG_Blog/posts/Gavin-Fisher_guide_w7/full_guide.html). I plan to do more before the summer finishes but this guide covers how to scrape images, clean data, make urls, scrape the Google API for streetview images, make models, implement models, and finally export results of models to a CSV for each address. Our team also made the teaser video for our AI housing project.
 
 I have also made an algorithm that will rename photos from Winvest so that I can sort it into the parent folder and have more than just Google images to evaluate. A lot of this week has been updating and improving the code from last week so that everything works better. On my todo list includes adding the roof model, retrain existing models to improve accuracy, and try to make heatmaps by the end of the project.
-
-
