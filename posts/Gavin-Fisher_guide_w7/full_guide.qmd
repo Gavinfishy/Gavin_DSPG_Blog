@@ -334,6 +334,8 @@ model.save(os.path.join('models','house_present_classifier.h5'))
 
 ## Building a Multi-Category Image Classification AI Model
 
+In progress ...
+
 ## Sorting Images
 
 This step follows the Google scraping section directly. Sorting images is a very time consuming process and we have not found a quicker way than manually sorting image by image. I have tried to make this process as efficient as possible with the following method. First make a copy of the image folder so that you have the original images if you need to sort multiple ways. Next go to the image folder and make folders for each sorting method you have. Below is an example of what it looked like while I was sorting for siding. I had a good siding, chipped paint, and poor folder which would be used for training the model. I also had an excess good folder and a delete folder. The excess good folder took a bulk of the good houses because you do not want your data amounts to be too uneven. If you have too many duplicates or too many images in one folder this can cause inaccuracies in the model's predictions. The delete folder made the sorting go quicker to just throw images into that folder and delete them later rather than deleting bad images as they come.

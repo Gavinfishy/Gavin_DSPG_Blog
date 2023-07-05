@@ -18,7 +18,3 @@ From this video I got a majority of the code but some of the libraries were outd
 ![](cam_bottom.png)
 
 I want to alter this code a little however. The classifiers and models are not the ones we built, so I think it would be pretty cool if we could implement our housing models into this method to see how well the models are operating with visual examples. Knowing that our models are not very accurate this could help us to know what specific features we need more images of or which features give the model false guesses.
-
-
-
-
