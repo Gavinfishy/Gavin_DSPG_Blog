@@ -8,16 +8,16 @@ about:
       text: LinkedIn
       href: https://www.linkedin.com/in/gavin-fisher-0b3088238/
     - icon: github
-      text: Github
+      text: GitHub
       href: https://github.com/Gavinfishy
 ---
 
-Gavin is from Bolingbrook Illinois, an upcoming Junior at Iowa State University with a major in Computer Science and a minor in Data Science. He is part of the Cardinal Space Mining Club as part of the controls team and soon to be treasurer of the club. This blog's purpose is to track Gavin's work done at DSPG as part of the AI housing team.
+Gavin is from Bolingbrook Illinois, an upcoming Junior at Iowa State University with a major in Computer Science and a minor in Data Science. He is part of the Cardinal Space Mining Club as part of the controls team and soon to be treasurer of the club. This blog's purpose is to track Gavin's work done with DSPG as part of the AI housing team.
 
 ### Links to other members of the DSPG AI Housing Team
 
-Undergrads: [Angelina](https://1angelinaevans.github.io/AngelinaEvansBlog/), [Kailyn](https://kailynhogan.github.io/Kailyn_Hogan_DSPG_Blog/)
+Undergrads: [Angelina](https://1angelinaevans.github.io/AngelinaEvansBlog/){target="_blank"}, [Kailyn](https://kailynhogan.github.io/Kailyn_Hogan_DSPG_Blog/){target="_blank"}
 
-Team leads: [Morenike](https://morenikeope.github.io/Atejioye_Blog/), Sadat
+Team leads: [Morenike](https://morenikeope.github.io/Atejioye_Blog/){target="_blank"}, Sadat
 
-[DSPG Blog](https://dspg-2023.github.io/DSPG2023/)
+[DSPG Blog](https://dspg-2023.github.io/DSPG2023/){target="_blank"}
