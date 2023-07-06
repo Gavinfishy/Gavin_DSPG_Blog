@@ -1,9 +1,11 @@
 ---
 title: "Week Eight Blog"
 author: "Gavin D. Fisher"
-date: "2023-07-08"
-categories: ["Week Eight", "Excel"]
+date: "2023-07-06"
+categories: ["Week Eight", "Excel", "Web Scraping", "AI Models"]
 ---
+
+## Evaluation Sample, Test Cases, Beacon Images, SHAP
 
 First I took a sample of the data bases to see how accurate the models were predicting. I used about 25 addresses from each source (Grundy Center, Independence, New Hampton, Slater, and Ogden) which totaled to 118 addresses after removing the empty evaluations from New Hampton. This is a very small sample considering we have a couple thousand addresses in our database. I went one by one checking whether each attribute was predicted properly for each image.
 
@@ -22,3 +24,34 @@ Next some issues I found with this sample:
 7.  Image of the inside of a store marked house present
 
 I wrote comments of every issue in one of the sample data csv columns.
+
+### Test Cases
+
+Next I made a list of test cases to test the models and overall program. Our team will not be able to finish creating these tests but it is important for next year so when they improve the models they have a basic testing plan.
+
+![](test_case.png)
+
+### Beacon Images
+
+Aaron Case on the local foods team was kind enough to spend some time creating a spider to scrape Beacon for information on houses in Independence. I am not sure if we will be providing next years AI Housing team with this code (depends if he shares or not, if not spiders aren't horrible just take a lot of time to make). 
+
+Aaron's spider scraped image urls and some other information on the Independence homes but the most helpful part was the image links. This provides us with three sources for some addresses in Independence to evaluate. I made a python script to read in these urls and grab all of the images to use for evaluation. After creating this program sorting the images and implementing them into the Independence database was pretty straightforward.
+
+### SHAP
+
+After some tweaking of the model Sadat helped me get the SHAP images to show up and they are quite interesting to see.
+
+![](tree_shap.png)
+
+The red spots in the bottom graphic show which pixels in the house image are most influential in determining that a house is present. As you can see the trees are highlighted so the model is determining that a house is present because it cannot see the full shape of the tree.
+
+![](house_shap.png)
+
+This second image shows what we want the model to see more. It is still looking at the trees but it is also looking at the house to make it's prediction. This is largely due to the lack of training data we have provided the models to train on because most images we have given the model have trees in the image.
+
+Although it is disappointing to see that the model is looking at the trees more than the houses this is an important step in understanding how the models learn from the images we provide.
+
+Next I applied this working SHAP model to evaluate Vegetation, Siding, Gutters, and Roofing.
+
+
+
