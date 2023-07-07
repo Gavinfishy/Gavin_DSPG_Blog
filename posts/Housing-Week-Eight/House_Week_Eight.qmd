@@ -5,5 +5,46 @@ date: "2023-07-07"
 categories: ["Week Eight", "Housing Team"]
 ---
 
-## AI Housing Week Eight Recap :p
+## AI Housing Week Eight Recap
 
+Shortened blog this week.
+
+### Demographic Analysis
+
+-   Finished editing demographic profile plots
+
+-   State, regional, and national context added to graphs
+
+-   Added percentages to some of the graphs
+
+![](yr_built.png)
+
+### Tableau Graphing
+
+-   Created house attribute quality dashboards
+
+-   Made a guide on how to create the maps
+
+-   Plan to make graphs on AI model accuracy vs actual house quality
+
+![](tableau.png)
+
+### AI Models
+
+-   Thanks to Aaron's spider, Beacon images were added to the Independence database evaluation
+
+-   SHAP model works on our own datasets (Sadat fixed the code)
+
+-   Plan to have SHAP models for each attribute to visualize how well the models are preforming
+
+![](house_shap.png)
+
+![](tree_shap.png)
+
+### Next Steps
+
+-   Finish demographic analysis for Iowa communities
+
+-   Graph AI confidence vs accuracy
+
+-   Implement SHAP models into program (and hopefully CAM too!)
