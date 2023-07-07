@@ -1,7 +1,7 @@
 ---
 title: "Week Eight Blog"
 author: "Gavin D. Fisher"
-date: "2023-07-06"
+date: "2023-07-07"
 categories: ["Week Eight", "Excel", "Web Scraping", "AI Models"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Weekend Six Blog"
 author: "Gavin D. Fisher"
 date: "2023-06-25"
-categories: ["Week Six", "AI Models", "Python", "Weekend"]
+categories: ["Week Six", "AI Models", "Python", "Weekend", "PyTorch"]
 ---
 
 This weekend I set out to make what I refer to as AI heatmaps which is created when an image classification model predicts a class we also track what pixels in the image helped influence it's prediction. I tried to use pytorch but after lots of code and lots of error I put a temporary pause and explored other libraries. I ended up using keras and resnet for my class activation mapping python script by following along with a [video](https://www.youtube.com/watch?v=4v9usdvGU50&ab_channel=LazyProgrammer).
