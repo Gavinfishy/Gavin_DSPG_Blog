@@ -6,6 +6,7 @@ categories: ["Week Nine", "AI Models", "Python", "Guide", "Google Colab", "PyTor
 execute:
   echo: false
 toc: TRUE
+image: "neural_network.png"
 ---
 
 # Full Guide on Housing Team's AI
@@ -22,6 +23,8 @@ CNNs consist of multiple different layers which make up the neural network. Afte
 
 After a model is trained with data we can use it to predict which class new images are part of. For example if we train a model on images that have a picture of a house and images that have images of no house the model will predict whether a new image it has not seen before to have a house or to have no house.
 
+![Neural Network](neural_network.png)
+
 ## Training Images
 
 Training images are the most important factor of how well a model will preform. We cannot tune the model to be better preforming if the input images for training are poorly chosen. This is a huge issue the AI Housing team ran into this summer, there are plenty of images available online of good houses but much less of houses with damages which we are trying to evaluate. The following numbers are the ratios of images for the house present, vegetation, siding, gutter, and roof models.
@@ -32,7 +35,7 @@ Overall the ratios of images are not too bad but the total numbers are bad. For 
 
 ## Google Colab
 
-[Google Colab](https://colab.research.google.com/){target="_blank"} is an online Jupyter Notebooks Google service. The first pilot models built for this project was done on Jupyter Labs following these videos([Video 1](https://www.youtube.com/watch?v=19LQRx78QVU&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=1&ab_channel=NicholasRenotte){target="_blank"} [Video 2](https://www.youtube.com/watch?v=jztwpsIzEGc&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=2&ab_channel=NicholasRenotte){target="_blank"}). Google Colab serves the same purpose but is more user friendly to students not as familiar with code, as there is less to set up. Colab pairs with Google Drive so all data being used must be saved there first then exported if it is needed somewhere else. 
+[Google Colab](https://colab.research.google.com/){target="_blank"} is an online Jupyter Notebooks Google service. The first pilot models built for this project was done on Jupyter Labs following these videos([Video 1](https://www.youtube.com/watch?v=19LQRx78QVU&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=1&ab_channel=NicholasRenotte){target="_blank"} [Video 2](https://www.youtube.com/watch?v=jztwpsIzEGc&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=2&ab_channel=NicholasRenotte){target="_blank"}). Google Colab serves the same purpose but is more user friendly to students not as familiar with code, as there is less to set up. Colab pairs with Google Drive so all data being used must be saved there first then exported if it is needed somewhere else.
 
 ## Tensorflow Models
 
@@ -42,11 +45,11 @@ The first models we built used the Tensorflow and Keras libraries. If you are in
 
 Now we must build the neural network, using a sequential model we used relu activation layers, max pooling layers, and a softmax dense layer.
 
-
 ![](neural_structure.png)
 
 ![](summary.png)
-After building the network you can train based on the input data. This is the siding model we are walking through which has three classes of data input, good siding, siding with chipped paint, and poor or damaged siding. 
+
+After building the network you can train based on the input data. This is the siding model we are walking through which has three classes of data input, good siding, siding with chipped paint, and poor or damaged siding.
 
 ![](train.png)
 
@@ -58,9 +61,39 @@ After the model is trained we can gather the accuracy and loss of the model. Acc
 
 ![](overfitting.png)
 
+On a range of zero to one accuracy should be as close to one as possible while loss should be as close to zero as possible. The first image shows how these graphs should look to know you have a decent model. The second image shows what our graphs look like from the siding model. There are multiple possible issues that could be causing our graphs to look that way but the most probable reason right now is insufficient training data. Greatly increasing the training data will not perfect the accuracy and loss but this will certainly take us a step in that direction.
 
+The third image shows another problem to watch out for once our model increases in quality. Overfitting is a phenomenon that occurs when a model becomes exceptional in the training data but cannot predict new images well. This can be avoided by increasing the data size or reducing model complexity. This is not yet a problem for any of the models used during this project but is an important concept to keep in mind for the future. Finally the model can be exported to be used for predictions.
+
+## How Did We Use These Models?
+
+The AI Housing team built seven models for evaluating addresses (more were made this is discussed later). We made three models for image quality testing, the house present model which checks if a house is present in the image, the clear image model which checks to see if the house is obstructed, and the multiple house model which checks if multiple houses are visible.
+
+The image quality models were made to eliminate bad images and select the best image to evaluate when given a few. Images with no houses or houses that can barely be seen due to obstruction should not be evaluated and if multiple images are available we want the image with only one house visible.
+
+After
+
+... In Progress I got bored of this section :P
 
 ## SHAP Models
+
+SHapley Additive exPlanations or SHAP is a method to explain predictions made by machine learning models. This roots from the [Shapley value](https://en.wikipedia.org/wiki/Shapley_value){target="_blank"}, which is a cooperative game theory that evaluates how important each player is for the overall cooperation and what payoff they can expect. This theory can be applied to machine learning models by looking at local accuracy, misingness, and consistency to determine what parts of input were most influential in the model making a prediction. Read more [here](https://towardsdatascience.com/deep-learning-model-interpretation-using-shap-a21786e91d16){target="_blank"}.
+
+The SHAP models were made in Google Colab using Tensorflow and keras just as the earlier models plus sklearn. As shown below the SHAP model is built with many more convolutional layers but as a result the loss is very low and the accuracy is very high. The following screenshots are from the house present SHAP model.
+
+![](shap_structure.png)
+
+![](shap_sum.png)
+
+![](shap_acc.png)
+
+Next we show the SHAP images. What is interesting about these graphs is that the first image shows that the model is looking at the outline of the house while the second model is looking exclusively at the trees behind the house. Our best explanation is that there is not enough training data for the model to realize that it is looking for the house not the trees being partially cut off. Either way it is interesting to see graphs of which pixels of the image most greatly influence a models prediction.
+
+![](shap_house.png)
+
+![](shap_tree.png)
+
+
 
 ## PyTorch and CAM Models
 

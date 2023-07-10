@@ -152,6 +152,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#training-images" id="toc-training-images" class="nav-link" data-scroll-target="#training-images">Training Images</a></li>
   <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">Google Colab</a></li>
   <li><a href="#tensorflow-models" id="toc-tensorflow-models" class="nav-link" data-scroll-target="#tensorflow-models">Tensorflow Models</a></li>
+  <li><a href="#how-did-we-use-these-models" id="toc-how-did-we-use-these-models" class="nav-link" data-scroll-target="#how-did-we-use-these-models">How Did We Use These Models?</a></li>
   <li><a href="#shap-models" id="toc-shap-models" class="nav-link" data-scroll-target="#shap-models">SHAP Models</a></li>
   <li><a href="#pytorch-and-cam-models" id="toc-pytorch-and-cam-models" class="nav-link" data-scroll-target="#pytorch-and-cam-models">PyTorch and CAM Models</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
@@ -174,6 +175,12 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="max_pool.png" class="img-fluid"></p>
 <p>CNNs consist of multiple different layers which make up the neural network. After constructing a network we are able to ‘train’ the model on images. Our team used supervised learning to train the models, this simply means that we had pre-sorted categories for the model to learn from. A common saying is in this area is ‘garbage in, garbage out’, meaning if you feed the model bad data it will preform poorly. Sorting images for training models is a long process but it is necessary so that we can have the best output possible.</p>
 <p>After a model is trained with data we can use it to predict which class new images are part of. For example if we train a model on images that have a picture of a house and images that have images of no house the model will predict whether a new image it has not seen before to have a house or to have no house.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="neural_network.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Neural Network</figcaption><p></p>
+</figure>
+</div>
 </section>
 <section id="training-images" class="level2">
 <h2 class="anchored" data-anchor-id="training-images">Training Images</h2>
@@ -191,15 +198,33 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="sample.png" class="img-fluid"></p>
 <p>Now we must build the neural network, using a sequential model we used relu activation layers, max pooling layers, and a softmax dense layer.</p>
 <p><img src="neural_structure.png" class="img-fluid"></p>
-<p><img src="summary.png" class="img-fluid"> After building the network you can train based on the input data. This is the siding model we are walking through which has three classes of data input, good siding, siding with chipped paint, and poor or damaged siding.</p>
+<p><img src="summary.png" class="img-fluid"></p>
+<p>After building the network you can train based on the input data. This is the siding model we are walking through which has three classes of data input, good siding, siding with chipped paint, and poor or damaged siding.</p>
 <p><img src="train.png" class="img-fluid"></p>
 <p>After the model is trained we can gather the accuracy and loss of the model. Accuracy is how accurate the model was at predicting classification of the testing data set while loss is the measure of how different a models predictions were from the actual labels. We want the accuracy as high as possible and loss as low as possible. Below an ideal loss and accuracy graph is shown, then the one for the siding model, then what overfitting looks like.</p>
 <p><img src="proper_loss.png" class="img-fluid"></p>
 <p><img src="loss_acc.png" class="img-fluid"></p>
 <p><img src="overfitting.png" class="img-fluid"></p>
+<p>On a range of zero to one accuracy should be as close to one as possible while loss should be as close to zero as possible. The first image shows how these graphs should look to know you have a decent model. The second image shows what our graphs look like from the siding model. There are multiple possible issues that could be causing our graphs to look that way but the most probable reason right now is insufficient training data. Greatly increasing the training data will not perfect the accuracy and loss but this will certainly take us a step in that direction.</p>
+<p>The third image shows another problem to watch out for once our model increases in quality. Overfitting is a phenomenon that occurs when a model becomes exceptional in the training data but cannot predict new images well. This can be avoided by increasing the data size or reducing model complexity. This is not yet a problem for any of the models used during this project but is an important concept to keep in mind for the future. Finally the model can be exported to be used for predictions.</p>
+</section>
+<section id="how-did-we-use-these-models" class="level2">
+<h2 class="anchored" data-anchor-id="how-did-we-use-these-models">How Did We Use These Models?</h2>
+<p>The AI Housing team built seven models for evaluating addresses (more were made this is discussed later). We made three models for image quality testing, the house present model which checks if a house is present in the image, the clear image model which checks to see if the house is obstructed, and the multiple house model which checks if multiple houses are visible.</p>
+<p>The image quality models were made to eliminate bad images and select the best image to evaluate when given a few. Images with no houses or houses that can barely be seen due to obstruction should not be evaluated and if multiple images are available we want the image with only one house visible.</p>
+<p>After</p>
+<p>… In Progress I got bored of this section :P</p>
 </section>
 <section id="shap-models" class="level2">
 <h2 class="anchored" data-anchor-id="shap-models">SHAP Models</h2>
+<p>SHapley Additive exPlanations or SHAP is a method to explain predictions made by machine learning models. This roots from the <a href="https://en.wikipedia.org/wiki/Shapley_value" target="_blank">Shapley value</a>, which is a cooperative game theory that evaluates how important each player is for the overall cooperation and what payoff they can expect. This theory can be applied to machine learning models by looking at local accuracy, misingness, and consistency to determine what parts of input were most influential in the model making a prediction. Read more <a href="https://towardsdatascience.com/deep-learning-model-interpretation-using-shap-a21786e91d16" target="_blank">here</a>.</p>
+<p>The SHAP models were made in Google Colab using Tensorflow and keras just as the earlier models plus sklearn. As shown below the SHAP model is built with many more convolutional layers but as a result the loss is very low and the accuracy is very high. The following screenshots are from the house present SHAP model.</p>
+<p><img src="shap_structure.png" class="img-fluid"></p>
+<p><img src="shap_sum.png" class="img-fluid"></p>
+<p><img src="shap_acc.png" class="img-fluid"></p>
+<p>Next we show the SHAP images. What is interesting about these graphs is that the first image shows that the model is looking at the outline of the house while the second model is looking exclusively at the trees behind the house. Our best explanation is that there is not enough training data for the model to realize that it is looking for the house not the trees being partially cut off. Either way it is interesting to see graphs of which pixels of the image most greatly influence a models prediction.</p>
+<p><img src="shap_house.png" class="img-fluid"></p>
+<p><img src="shap_tree.png" class="img-fluid"></p>
 </section>
 <section id="pytorch-and-cam-models" class="level2">
 <h2 class="anchored" data-anchor-id="pytorch-and-cam-models">PyTorch and CAM Models</h2>
