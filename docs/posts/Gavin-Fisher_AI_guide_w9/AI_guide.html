@@ -167,12 +167,19 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="full-guide-on-housing-teams-ai" class="level1">
 <h1>Full Guide on Housing Team’s AI</h1>
-<p>This will be a guide to a general idea of how AI works, which models were made, and the results we got.</p>
+<p>This will be a guide to a general idea of how AI works, which models we made, and the results we got.</p>
 <section id="how-ai-works" class="level2">
 <h2 class="anchored" data-anchor-id="how-ai-works">How AI Works</h2>
+<p>First an intro to the general idea of how image classification artificial intelligence models work. Image classification models use deep learning to analyze and classify images into different categories. These models typically use convolutional neural networks, or CNNs, which are designed to handle visual data. Computers cannot see images the same way as us, they must look over images in multiple ways to understand them. A CNN can looks at neighborhoods of pixels to look at edges, textures, and corners to find common patterns in a set of images.</p>
+<p><img src="max_pool.png" class="img-fluid"></p>
+<p>CNNs consist of multiple different layers which make up the neural network. After constructing a network we are able to ‘train’ the model on images. Our team used supervised learning to train the models, this simply means that we had pre-sorted categories for the model to learn from. A common saying is in this area is ‘garbage in, garbage out’, meaning if you feed the model bad data it will preform poorly. Sorting images for training models is a long process but it is necessary so that we can have the best output possible.</p>
+<p>After a model is trained with data we can use it to predict which class new images are part of. For example if we train a model on images that have a picture of a house and images that have images of no house the model will predict whether a new image it has not seen before to have a house or to have no house.</p>
 </section>
 <section id="training-images" class="level2">
 <h2 class="anchored" data-anchor-id="training-images">Training Images</h2>
+<p>Training images are the most important factor of how well a model will preform. We cannot tune the model to be better preforming if the input images for training are poorly chosen. This is a huge issue the AI Housing team ran into this summer, there are plenty of images available online of good houses but much less of houses with damages which we are trying to evaluate. The following numbers are the ratios of images for the house present, vegetation, siding, gutter, and roof models.</p>
+<p>430:100, 200:40:170, 210:150:100, 200:130, 260:150</p>
+<p>Overall the ratios of images are not too bad but the total numbers are bad. For every model the smallest number is the ‘negative’ attribute whether that is a damaged gutter or damaged roof etc. Early models built during this project used about 400 images in each category just to test how models work and they predicted somewhat decent. Having less than 200 images to train on was very problematic because with only training on a couple hundred images there is no way a model can correctly predict thousands of new images from this data. This has greatly affected the model accuracy for every model we built. Future DSPG AI Housing team members need to sort many more images to increase the accuracy of models created before they can be considered reliable.</p>
 </section>
 <section id="google-colab" class="level2">
 <h2 class="anchored" data-anchor-id="google-colab">Google Colab</h2>
