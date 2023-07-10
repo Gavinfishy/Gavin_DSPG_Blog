@@ -7,6 +7,7 @@ execute:
   echo: false
 toc: TRUE
 ---
+
 # Full Guide on Housing Team's AI
 
 This will be a guide to a general idea of how AI works, which models we made, and the results we got.
@@ -27,18 +28,40 @@ Training images are the most important factor of how well a model will preform. 
 
 430:100, 200:40:170, 210:150:100, 200:130, 260:150
 
-Overall the ratios of images are not too bad but the total numbers are bad. For every model the smallest number is the 'negative' attribute whether that is a damaged gutter or damaged roof etc. Early models built during this project used about 400 images in each category just to test how models work and they predicted somewhat decent. Having less than 200 images to train on was very problematic because with only training on a couple hundred images there is no way a model can correctly predict thousands of new images from this data. This has greatly affected the model accuracy for every model we  built. Future DSPG AI Housing team members need to sort many more images to increase the accuracy of models created before they can be considered reliable.
-
+Overall the ratios of images are not too bad but the total numbers are bad. For every model the smallest number is the 'negative' attribute whether that is a damaged gutter or damaged roof etc. Early models built during this project used about 400 images in each category just to test how models work and they predicted somewhat decent. Having less than 200 images to train on was very problematic because with only training on a couple hundred images there is no way a model can correctly predict thousands of new images from this data. This has greatly affected the model accuracy for every model we built. Future DSPG AI Housing team members need to sort many more images to increase the accuracy of models created before they can be considered reliable.
 
 ## Google Colab
 
+[Google Colab](https://colab.research.google.com/){target="_blank"} is an online Jupyter Notebooks Google service. The first pilot models built for this project was done on Jupyter Labs following these videos([Video 1](https://www.youtube.com/watch?v=19LQRx78QVU&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=1&ab_channel=NicholasRenotte){target="_blank"} [Video 2](https://www.youtube.com/watch?v=jztwpsIzEGc&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=2&ab_channel=NicholasRenotte){target="_blank"}). Google Colab serves the same purpose but is more user friendly to students not as familiar with code, as there is less to set up. Colab pairs with Google Drive so all data being used must be saved there first then exported if it is needed somewhere else. 
+
+## Tensorflow Models
+
+The first models we built used the Tensorflow and Keras libraries. If you are interested in seeing the program we wrote [navigate here](https://github.com/DSPG-2023/Housing/tree/main/models_algorithm){target="_blank"} and all of the model folders have ipynb files which can be opened in Google Colab. But a short recap, we used 70% of the data for testing, 20% for validation, and 10% for testing. The training data trains the model, the validation data validates that the model is training properly and not overfitting, and the testing data is used to test how well the model preforms after being trained. Next we can look at a sample of the data to see the different buckets that we sorted the images into.
+
+![](sample.png)
+
+Now we must build the neural network, using a sequential model we used relu activation layers, max pooling layers, and a softmax dense layer.
 
 
-## Tensorflow 
+![](neural_structure.png)
 
-## SHAP
+![](summary.png)
+After building the network you can train based on the input data. This is the siding model we are walking through which has three classes of data input, good siding, siding with chipped paint, and poor or damaged siding. 
 
-## PyTorch and CAM
+![](train.png)
+
+After the model is trained we can gather the accuracy and loss of the model. Accuracy is how accurate the model was at predicting classification of the testing data set while loss is the measure of how different a models predictions were from the actual labels. We want the accuracy as high as possible and loss as low as possible. Below an ideal loss and accuracy graph is shown, then the one for the siding model, then what overfitting looks like.
+
+![](proper_loss.png)
+
+![](loss_acc.png)
+
+![](overfitting.png)
+
+
+
+## SHAP Models
+
+## PyTorch and CAM Models
 
 ## Conclusions
-
