@@ -11,7 +11,7 @@ image: "neural_network.png"
 
 # Full Guide on Housing Team's AI
 
-This will be a guide to a general idea of how AI works, which models we made, and the results we got.
+This will be a guide to a general idea of how AI works, which models we made, and the results.
 
 ## How AI Works
 
@@ -93,8 +93,53 @@ Next we show the SHAP images. What is interesting about these graphs is that the
 
 ![](shap_tree.png)
 
-
+We have just simply gotten these models to run properly, they are not yet implemented into any other code. The SHAP models need to be compared to our first models to see if there are accuracy differences and if one network works better than the other. Additionally this can be implemented into our program to return a folder of images for each address evaluated so that we can get an idea of what type of images need to be added to the training data. 
 
 ## PyTorch and CAM Models
+
+Class Activation Mapping or CAM is another way of displaying why a model made a prediction. Similar to the SHAP method, CAM highlights important regions in an image that play a role in the models prediction making what looks like a heatmap. Read more [here](https://debuggercafe.com/basic-introduction-to-class-activation-maps-in-deep-learning-using-pytorch/){target="_blank"}.
+
+The first model we built for CAM used keras and ResNet50. To read more on ResNet go [here](https://www.geeksforgeeks.org/residual-networks-resnet-deep-learning/#){target="_blank"}. Residual Networks or ResNet are Deep Learning networks that basically allow skipping of convolutional layers if they harm the models accuracy. The first model also used ImageNet which is a dataset with millions of images used for training and evaluation computer vision models. So this model was a test of what was possible with using a prebuilt model and a large dataset. We randomly decided to choose panda images as a test to see how the program performed. 
+
+![](panda_identify.png)
+
+This had us very excited to use our own model and dataset to try and get the same result as the image above. Quickly it was discovered that the upwards of fifty layers in resnet could not be easily replaced by our eight layer models. So we decided to try and learn PyTorch (an alternative library to Tensorflow).
+
+The torch library has many different functions than Tensorflow and the neural networks are constructed a little differently. Thanks to courses on DataCamp we were able to figure out how to use PyTorch and get some good results.
+
+The second model built was a house presence model. We put this code in a python file instead of a jupyter notebooks file like what is produced in Google Colab just to test out the difference. The process of using our own training data and producing CAM images was a surprisingly quick process with minor hiccups.
+
+::: {layout-ncol="2"}
+![](house_orig.png)
+
+![](none_orig.png)
+:::
+
+
+::: {layout-ncol="2"}
+![](increased_data_house.png)
+ 
+![](increased_data.png)
+:::
+
+::: {layout-ncol="2"}
+![](house_cam.png)
+
+![](no_house_cam.png)
+:::
+
+Above is the progression of the house present CAM model. At first the heat bubbles showed up in what seemed to be random locations but what was a mystery is that they were the same in all test images. It turned out that the program was overriding the variable keeping track of what the model was doing for the prediction rather than making copies of the information. 
+
+After this was fixed, the model started to show certain areas that it was looking at to make it's prediction. We were not satisfied with the images because they still seemed to be random. At this point we had 400 images of houses and only 40 images of no house present so we spent time to almost double the amount of images with no house present to improve the model. After rerunning the program more heat spots were visible and seemed a little less random. 
+
+Note two things, first it seems this model likes to look at the trees for it's prediction just as the SHAP model and after more data was added the left image was correctly predicted no house present.
+
+However we were still not satisfied this being the last week there needs to be more to show that this program works than random blotches. So we took the model and replaced the data with 200 images of cats and dogs to see if the model was really working properly.
+
+![](cat.png)
+
+![](cat2.png)
+
+Above you can see the first image looks at the nose and some of the fur. We doubled the training data which resulted in the second image which has more red around one of the eyes. Going back to the panda image earlier, the more accurate the model is the more red we will see around the object that it identifies. This last cat image is so exciting to see because unlike the house images that seem to be random blotches, most of the color is concentrated on the cat's face.
 
 ## Conclusions

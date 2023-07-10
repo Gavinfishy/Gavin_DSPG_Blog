@@ -168,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="full-guide-on-housing-teams-ai" class="level1">
 <h1>Full Guide on Housing Team’s AI</h1>
-<p>This will be a guide to a general idea of how AI works, which models we made, and the results we got.</p>
+<p>This will be a guide to a general idea of how AI works, which models we made, and the results.</p>
 <section id="how-ai-works" class="level2">
 <h2 class="anchored" data-anchor-id="how-ai-works">How AI Works</h2>
 <p>First an intro to the general idea of how image classification artificial intelligence models work. Image classification models use deep learning to analyze and classify images into different categories. These models typically use convolutional neural networks, or CNNs, which are designed to handle visual data. Computers cannot see images the same way as us, they must look over images in multiple ways to understand them. A CNN can looks at neighborhoods of pixels to look at edges, textures, and corners to find common patterns in a set of images.</p>
@@ -225,9 +225,53 @@ ul.task-list li input[type="checkbox"] {
 <p>Next we show the SHAP images. What is interesting about these graphs is that the first image shows that the model is looking at the outline of the house while the second model is looking exclusively at the trees behind the house. Our best explanation is that there is not enough training data for the model to realize that it is looking for the house not the trees being partially cut off. Either way it is interesting to see graphs of which pixels of the image most greatly influence a models prediction.</p>
 <p><img src="shap_house.png" class="img-fluid"></p>
 <p><img src="shap_tree.png" class="img-fluid"></p>
+<p>We have just simply gotten these models to run properly, they are not yet implemented into any other code. The SHAP models need to be compared to our first models to see if there are accuracy differences and if one network works better than the other. Additionally this can be implemented into our program to return a folder of images for each address evaluated so that we can get an idea of what type of images need to be added to the training data.</p>
 </section>
 <section id="pytorch-and-cam-models" class="level2">
 <h2 class="anchored" data-anchor-id="pytorch-and-cam-models">PyTorch and CAM Models</h2>
+<p>Class Activation Mapping or CAM is another way of displaying why a model made a prediction. Similar to the SHAP method, CAM highlights important regions in an image that play a role in the models prediction making what looks like a heatmap. Read more <a href="https://debuggercafe.com/basic-introduction-to-class-activation-maps-in-deep-learning-using-pytorch/" target="_blank">here</a>.</p>
+<p>The first model we built for CAM used keras and ResNet50. To read more on ResNet go <a href="https://www.geeksforgeeks.org/residual-networks-resnet-deep-learning/#" target="_blank">here</a>. Residual Networks or ResNet are Deep Learning networks that basically allow skipping of convolutional layers if they harm the models accuracy. The first model also used ImageNet which is a dataset with millions of images used for training and evaluation computer vision models. So this model was a test of what was possible with using a prebuilt model and a large dataset. We randomly decided to choose panda images as a test to see how the program performed.</p>
+<p><img src="panda_identify.png" class="img-fluid"></p>
+<p>This had us very excited to use our own model and dataset to try and get the same result as the image above. Quickly it was discovered that the upwards of fifty layers in resnet could not be easily replaced by our eight layer models. So we decided to try and learn PyTorch (an alternative library to Tensorflow).</p>
+<p>The torch library has many different functions than Tensorflow and the neural networks are constructed a little differently. Thanks to courses on DataCamp we were able to figure out how to use PyTorch and get some good results.</p>
+<p>The second model built was a house presence model. We put this code in a python file instead of a jupyter notebooks file like what is produced in Google Colab just to test out the difference. The process of using our own training data and producing CAM images was a surprisingly quick process with minor hiccups.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="house_orig.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="none_orig.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="increased_data_house.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="increased_data.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="house_cam.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="no_house_cam.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>Above is the progression of the house present CAM model. At first the heat bubbles showed up in what seemed to be random locations but what was a mystery is that they were the same in all test images. It turned out that the program was overriding the variable keeping track of what the model was doing for the prediction rather than making copies of the information.</p>
+<p>After this was fixed, the model started to show certain areas that it was looking at to make it’s prediction. We were not satisfied with the images because they still seemed to be random. At this point we had 400 images of houses and only 40 images of no house present so we spent time to almost double the amount of images with no house present to improve the model. After rerunning the program more heat spots were visible and seemed a little less random.</p>
+<p>Note two things, first it seems this model likes to look at the trees for it’s prediction just as the SHAP model and after more data was added the left image was correctly predicted no house present.</p>
+<p>However we were still not satisfied this being the last week there needs to be more to show that this program works than random blotches. So we took the model and replaced the data with 200 images of cats and dogs to see if the model was really working properly.</p>
+<p><img src="cat.png" class="img-fluid"></p>
+<p><img src="cat2.png" class="img-fluid"></p>
+<p>Above you can see the first image looks at the nose and some of the fur. We doubled the training data which resulted in the second image which has more red around one of the eyes. Going back to the panda image earlier, the more accurate the model is the more red we will see around the object that it identifies. This last cat image is so exciting to see because unlike the house images that seem to be random blotches, most of the color is concentrated on the cat’s face.</p>
 </section>
 <section id="conclusions" class="level2">
 <h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
