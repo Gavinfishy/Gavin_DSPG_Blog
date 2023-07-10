@@ -1,0 +1,27 @@
+---
+title: "Guide: AI Models"
+author: "Gavin D. Fisher"
+date: "2023-07-11"
+categories: ["Week Nine", "AI Models", "Python", "Guide", "Google Colab", "PyTorch"]
+execute:
+  echo: false
+toc: TRUE
+---
+# Full Guide on Housing Team's AI
+
+This will be a guide to a general idea of how AI works, which models were made, and the results we got.
+
+## How AI Works
+
+## Training Images
+
+## Google Colab
+
+## Tensorflow 
+
+## SHAP
+
+## PyTorch and CAM
+
+## Conclusions
+

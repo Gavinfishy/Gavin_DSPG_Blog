@@ -1,0 +1,14 @@
+---
+title: "Week Nine Blog"
+author: "Gavin D. Fisher"
+date: "2023-07-12"
+categories: ["Week Nine", "AI Models", "PyTorch", "Python"]
+---
+
+## CAM, SHAP, BOX, Presentation
+
+This is our final week with our final presentation on Friday.
+
+First I made a guide 
+
+I am so glad to announce that I got the CAM model working as of Monday morning. It turns out that in the weekend Seven blog I almost had the entire model running properly. What I found during the eighth weekend 

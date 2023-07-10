@@ -51,7 +51,7 @@ This second image shows what we want the model to see more. It is still looking 
 
 Although it is disappointing to see that the model is looking at the trees more than the houses this is an important step in understanding how the models learn from the images we provide.
 
-Next I applied this working SHAP model to evaluate Vegetation, Siding, Gutters, and Roofing.
+
 
 
 
