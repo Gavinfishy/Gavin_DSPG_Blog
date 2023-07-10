@@ -5,10 +5,49 @@ date: "2023-07-12"
 categories: ["Week Nine", "AI Models", "PyTorch", "Python"]
 ---
 
-## CAM, SHAP, BOX, Presentation
+## Guide, CAM, BOX, Presentation
 
 This is our final week with our final presentation on Friday.
 
-First I made a guide 
+First I made a guide on AI used during this project [here](https://gavinfishy.github.io/Gavin_DSPG_Blog/posts/Gavin-Fisher_AI_guide_w9/AI_guide.html){target="_blank"}. This guide is for the Friday presentation but also future DSPG students.
 
-I am so glad to announce that I got the CAM model working as of Monday morning. It turns out that in the weekend Seven blog I almost had the entire model running properly. What I found during the eighth weekend 
+### CAM
+
+I am so glad to announce that I got the CAM model working as of Monday morning. It turns out that in the weekend Seven blog I almost had the entire model running properly. What I found during this eighth weekend is that instead of tracking the weights as the model predicted I was rewriting the value. So it was a simple fix of adding .clone() to make clones of the x variable. Last week it seemed that the heat map marks were showing up randomly and was the same in every test image but after my tweak they seemed random still but now different.
+
+
+::: {layout-ncol="2"}
+![](house_orig.png)
+
+![](none_orig.png)
+:::
+
+
+::: {layout-ncol="2"}
+![](increased_data_house.png)
+ 
+![](increased_data.png)
+:::
+
+::: {layout-ncol="2"}
+![](house_cam.png)
+
+![](no_house_cam.png)
+:::
+
+The difference between the second and third row of images is the amount of data. As I increased the amount of data the accuracy of the model increased with it so the red spots increased in size. I realized that the model may preform better if I used it on different data that was more simple such as cats and dogs. I think the reason the house present model is struggling in prediction is due to the trees in the background but as data increases accuracy should too.
+
+I duplicated the model to train on cats and dogs instead to see how well it worked when more simple data was available. The house present model had a ratio of about 400 images of houses present and 40 images of no house present which is a bad ratio while dog and cat images from Google I started with 100 of each category then increased to 200 in each category.
+
+![](cat.png)
+
+![](cat2.png)
+
+I was very excited to see these images because it showed that the CAM model was working properly. The house present category is difficult to determine due to trees and we allow houses to be in the background if it is a picture of an empty lot but it preforms much better on images of cats and dogs. With just 200 images of cats the model was able to look at the eyes and nose to determine that it was a cat. The second image has more coloring because it had more training data. An image that would show very high accuracy and confidence can be shown with the model I used to evaluate pandas during the 6th weekend [here](https://gavinfishy.github.io/Gavin_DSPG_Blog/posts/Gavin-Fisher_weekend6-7/Weekend_Six_Seven.html){target="_blank"}.
+
+![](panda_identify.png)
+
+Next I downloaded all of the images we have so far into box to replace the messy images that were there. I have made programs to download new Google Images and sort them so if I deleted extra images next year can download new ones.
+
+
+

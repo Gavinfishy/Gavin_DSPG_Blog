@@ -146,13 +146,53 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="cam-shap-box-presentation" class="level2">
-<h2 class="anchored" data-anchor-id="cam-shap-box-presentation">CAM, SHAP, BOX, Presentation</h2>
+<section id="guide-cam-box-presentation" class="level2">
+<h2 class="anchored" data-anchor-id="guide-cam-box-presentation">Guide, CAM, BOX, Presentation</h2>
 <p>This is our final week with our final presentation on Friday.</p>
-<p>First I made a guide</p>
-<p>I am so glad to announce that I got the CAM model working as of Monday morning. It turns out that in the weekend Seven blog I almost had the entire model running properly. What I found during the eighth weekend</p>
+<p>First I made a guide on AI used during this project <a href="https://gavinfishy.github.io/Gavin_DSPG_Blog/posts/Gavin-Fisher_AI_guide_w9/AI_guide.html" target="_blank">here</a>. This guide is for the Friday presentation but also future DSPG students.</p>
+<section id="cam" class="level3">
+<h3 class="anchored" data-anchor-id="cam">CAM</h3>
+<p>I am so glad to announce that I got the CAM model working as of Monday morning. It turns out that in the weekend Seven blog I almost had the entire model running properly. What I found during this eighth weekend is that instead of tracking the weights as the model predicted I was rewriting the value. So it was a simple fix of adding .clone() to make clones of the x variable. Last week it seemed that the heat map marks were showing up randomly and was the same in every test image but after my tweak they seemed random still but now different.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="house_orig.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="none_orig.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="increased_data_house.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="increased_data.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="house_cam.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="no_house_cam.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>The difference between the second and third row of images is the amount of data. As I increased the amount of data the accuracy of the model increased with it so the red spots increased in size. I realized that the model may preform better if I used it on different data that was more simple such as cats and dogs. I think the reason the house present model is struggling in prediction is due to the trees in the background but as data increases accuracy should too.</p>
+<p>I duplicated the model to train on cats and dogs instead to see how well it worked when more simple data was available. The house present model had a ratio of about 400 images of houses present and 40 images of no house present which is a bad ratio while dog and cat images from Google I started with 100 of each category then increased to 200 in each category.</p>
+<p><img src="cat.png" class="img-fluid"></p>
+<p><img src="cat2.png" class="img-fluid"></p>
+<p>I was very excited to see these images because it showed that the CAM model was working properly. The house present category is difficult to determine due to trees and we allow houses to be in the background if it is a picture of an empty lot but it preforms much better on images of cats and dogs. With just 200 images of cats the model was able to look at the eyes and nose to determine that it was a cat. The second image has more coloring because it had more training data. An image that would show very high accuracy and confidence can be shown with the model I used to evaluate pandas during the 6th weekend <a href="https://gavinfishy.github.io/Gavin_DSPG_Blog/posts/Gavin-Fisher_weekend6-7/Weekend_Six_Seven.html" target="_blank">here</a>.</p>
+<p><img src="panda_identify.png" class="img-fluid"></p>
+<p>Next I downloaded all of the images we have so far into box to replace the messy images that were there. I have made programs to download new Google Images and sort them so if I deleted extra images next year can download new ones.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
