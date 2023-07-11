@@ -1,7 +1,7 @@
 ---
 title: "Guide: AI Models"
 author: "Gavin D. Fisher"
-date: "2023-07-11"
+date: "2023-07-10"
 categories: ["Week Nine", "AI Models", "Python", "Guide", "Google Colab", "PyTorch"]
 execute:
   echo: false
@@ -27,7 +27,7 @@ After a model is trained with data we can use it to predict which class new imag
 
 ## Training Images
 
-Training images are the most important factor of how well a model will preform. We cannot tune the model to be better preforming if the input images for training are poorly chosen. This is a huge issue the AI Housing team ran into this summer, there are plenty of images available online of good houses but much less of houses with damages which we are trying to evaluate. The following numbers are the ratios of images for the house present, vegetation, siding, gutter, and roof models.
+Training images are the most important factor of how well a model will perform. We cannot tune the model to be better preforming if the input images for training are poorly chosen. This is a huge issue the AI Housing team ran into this summer, there are plenty of images available online of good houses but much less of houses with damages which we are trying to evaluate. The following numbers are the ratios of images for the house present, vegetation, siding, gutter, and roof models.
 
 430:100, 200:40:170, 210:150:100, 200:130, 260:150
 
@@ -67,13 +67,15 @@ The third image shows another problem to watch out for once our model increases 
 
 ## How Did We Use These Models?
 
+Below is an image of how our program works as a whole.
+
+Insert cool image here once it's done[]
+
 The AI Housing team built seven models for evaluating addresses (more were made this is discussed later). We made three models for image quality testing, the house present model which checks if a house is present in the image, the clear image model which checks to see if the house is obstructed, and the multiple house model which checks if multiple houses are visible.
 
-The image quality models were made to eliminate bad images and select the best image to evaluate when given a few. Images with no houses or houses that can barely be seen due to obstruction should not be evaluated and if multiple images are available we want the image with only one house visible.
+The image quality models were made to eliminate bad images and select the best image to evaluate when given a few. Images with no houses or houses that can barely be seen due to obstruction should not be evaluated and if multiple images are available we want the image with only one house visible. After running through the first few models, if there are still multiple images remaining the program randomly selects one to evaluate.
 
-After
-
-... In Progress I got bored of this section :P
+Next are the attribute models, which we currently have four, vegetation, siding, gutter, and roof. The vegetation model determines if there is no garden, a garden present, or overgrown weeds and bushes. The siding model determines if a house has good siding, chipped paint, or damaged siding such as panels missing or cracks. The gutter model determines if a house has good gutters or damaged gutters and the roof model determines if a house has a good roof or a damaged roof. Once all these attributes are predicted by the models we return them to a csv file joined on the address that was evaluated. We also keep track of the confidence percentage of each prediction which can be used for evaluation of the models confidence vs accuracy.
 
 ## SHAP Models
 
@@ -141,5 +143,3 @@ However we were still not satisfied this being the last week there needs to be m
 ![](cat2.png)
 
 Above you can see the first image looks at the nose and some of the fur. We doubled the training data which resulted in the second image which has more red around one of the eyes. Going back to the panda image earlier, the more accurate the model is the more red we will see around the object that it identifies. This last cat image is so exciting to see because unlike the house images that seem to be random blotches, most of the color is concentrated on the cat's face.
-
-## Conclusions

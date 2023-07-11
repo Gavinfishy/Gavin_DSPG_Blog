@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gavin D. Fisher">
-<meta name="dcterms.date" content="2023-07-11">
+<meta name="dcterms.date" content="2023-07-10">
 
 <title>Home - Guide: AI Models</title>
 <style>
@@ -130,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 11, 2023</p>
+        <p class="date">July 10, 2023</p>
       </div>
     </div>
     
@@ -155,7 +155,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#how-did-we-use-these-models" id="toc-how-did-we-use-these-models" class="nav-link" data-scroll-target="#how-did-we-use-these-models">How Did We Use These Models?</a></li>
   <li><a href="#shap-models" id="toc-shap-models" class="nav-link" data-scroll-target="#shap-models">SHAP Models</a></li>
   <li><a href="#pytorch-and-cam-models" id="toc-pytorch-and-cam-models" class="nav-link" data-scroll-target="#pytorch-and-cam-models">PyTorch and CAM Models</a></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -184,7 +183,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="training-images" class="level2">
 <h2 class="anchored" data-anchor-id="training-images">Training Images</h2>
-<p>Training images are the most important factor of how well a model will preform. We cannot tune the model to be better preforming if the input images for training are poorly chosen. This is a huge issue the AI Housing team ran into this summer, there are plenty of images available online of good houses but much less of houses with damages which we are trying to evaluate. The following numbers are the ratios of images for the house present, vegetation, siding, gutter, and roof models.</p>
+<p>Training images are the most important factor of how well a model will perform. We cannot tune the model to be better preforming if the input images for training are poorly chosen. This is a huge issue the AI Housing team ran into this summer, there are plenty of images available online of good houses but much less of houses with damages which we are trying to evaluate. The following numbers are the ratios of images for the house present, vegetation, siding, gutter, and roof models.</p>
 <p>430:100, 200:40:170, 210:150:100, 200:130, 260:150</p>
 <p>Overall the ratios of images are not too bad but the total numbers are bad. For every model the smallest number is the ‘negative’ attribute whether that is a damaged gutter or damaged roof etc. Early models built during this project used about 400 images in each category just to test how models work and they predicted somewhat decent. Having less than 200 images to train on was very problematic because with only training on a couple hundred images there is no way a model can correctly predict thousands of new images from this data. This has greatly affected the model accuracy for every model we built. Future DSPG AI Housing team members need to sort many more images to increase the accuracy of models created before they can be considered reliable.</p>
 </section>
@@ -210,10 +209,11 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="how-did-we-use-these-models" class="level2">
 <h2 class="anchored" data-anchor-id="how-did-we-use-these-models">How Did We Use These Models?</h2>
+<p>Below is an image of how our program works as a whole.</p>
+<p>Insert cool image here once it’s done[]</p>
 <p>The AI Housing team built seven models for evaluating addresses (more were made this is discussed later). We made three models for image quality testing, the house present model which checks if a house is present in the image, the clear image model which checks to see if the house is obstructed, and the multiple house model which checks if multiple houses are visible.</p>
-<p>The image quality models were made to eliminate bad images and select the best image to evaluate when given a few. Images with no houses or houses that can barely be seen due to obstruction should not be evaluated and if multiple images are available we want the image with only one house visible.</p>
-<p>After</p>
-<p>… In Progress I got bored of this section :P</p>
+<p>The image quality models were made to eliminate bad images and select the best image to evaluate when given a few. Images with no houses or houses that can barely be seen due to obstruction should not be evaluated and if multiple images are available we want the image with only one house visible. After running through the first few models, if there are still multiple images remaining the program randomly selects one to evaluate.</p>
+<p>Next are the attribute models, which we currently have four, vegetation, siding, gutter, and roof. The vegetation model determines if there is no garden, a garden present, or overgrown weeds and bushes. The siding model determines if a house has good siding, chipped paint, or damaged siding such as panels missing or cracks. The gutter model determines if a house has good gutters or damaged gutters and the roof model determines if a house has a good roof or a damaged roof. Once all these attributes are predicted by the models we return them to a csv file joined on the address that was evaluated. We also keep track of the confidence percentage of each prediction which can be used for evaluation of the models confidence vs accuracy.</p>
 </section>
 <section id="shap-models" class="level2">
 <h2 class="anchored" data-anchor-id="shap-models">SHAP Models</h2>
@@ -272,9 +272,6 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="cat.png" class="img-fluid"></p>
 <p><img src="cat2.png" class="img-fluid"></p>
 <p>Above you can see the first image looks at the nose and some of the fur. We doubled the training data which resulted in the second image which has more red around one of the eyes. Going back to the panda image earlier, the more accurate the model is the more red we will see around the object that it identifies. This last cat image is so exciting to see because unlike the house images that seem to be random blotches, most of the color is concentrated on the cat’s face.</p>
-</section>
-<section id="conclusions" class="level2">
-<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
 
 
 </section>
