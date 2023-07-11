@@ -69,7 +69,7 @@ The third image shows another problem to watch out for once our model increases 
 
 Below is an image of how our program works as a whole.
 
-Insert cool image here once it's done[]
+![](model_plan.png)
 
 The AI Housing team built seven models for evaluating addresses (more were made this is discussed later). We made three models for image quality testing, the house present model which checks if a house is present in the image, the clear image model which checks to see if the house is obstructed, and the multiple house model which checks if multiple houses are visible.
 
