@@ -3,6 +3,7 @@ project:
   output-dir: docs
 website:
   title: "Home"
+  favicon: "isu_logo.ico"
   navbar:
     background: '#C8102E'
     right:

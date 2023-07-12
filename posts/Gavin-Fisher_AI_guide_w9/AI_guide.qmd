@@ -1,7 +1,7 @@
 ---
 title: "Guide: AI Models"
 author: "Gavin D. Fisher"
-date: "2023-07-10"
+date: "2023-07-11"
 categories: ["Week Nine", "AI Models", "Python", "Guide", "Google Colab", "PyTorch"]
 execute:
   echo: false
