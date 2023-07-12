@@ -4,6 +4,8 @@ project:
 website:
   title: "Home"
   favicon: "isu_logo.ico"
+  open-graph: true
+  
   navbar:
     background: '#C8102E'
     right:
