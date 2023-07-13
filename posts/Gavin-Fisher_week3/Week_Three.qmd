@@ -40,4 +40,4 @@ Next a rough draft of our project plan was created using visio. This was created
 
 ![Housing AI Project Plan](DSPG_project_plan.png "Housing AI Project Plan")
 
-Finally, we looked further into what can be scraped off of Vanguard, Beacon, Trulia, and from the Google Maps API.Using https://iowaassessors.com/ I looked at Story counter for the city of Slater. Roads appear to be counted as parcels which is challenging while trying to collect addresses data.
+Finally, we looked further into what can be scraped off of Vanguard, Beacon, Trulia, and from the Google Maps API.Using [Iowaassessors.com](https://www.iowaassessors.com/) I looked at Story counter for the city of Slater. Roads appear to be counted as parcels which is challenging while trying to collect addresses data.
