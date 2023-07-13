@@ -15,17 +15,15 @@ First I made a guide on AI used during this project [here](https://gavinfishy.gi
 
 I am so glad to announce that I got the CAM model working as of Monday morning. It turns out that in the weekend Seven blog I almost had the entire model running properly. What I found during this eighth weekend is that instead of tracking the weights as the model predicted I was rewriting the value. So it was a simple fix of adding .clone() to make clones of the x variable. Last week it seemed that the heat map marks were showing up randomly and was the same in every test image but after my tweak they seemed random still but now different.
 
-
 ::: {layout-ncol="2"}
 ![](house_orig.png)
 
 ![](none_orig.png)
 :::
 
-
 ::: {layout-ncol="2"}
 ![](increased_data_house.png)
- 
+
 ![](increased_data.png)
 :::
 
@@ -53,5 +51,10 @@ Some time was spent writing recommendations for next year. I wrote most of the c
 
 Huge issue I just found, the h5 file produced for the SHAP model is too big to upload to GitHub. The maximum is 100 MB and the h5 file is 197 MB. I decided that this is not my problem (sorry next year) but I uploaded the code to construct new models. There is a process to upload large files through git [here](https://git-lfs.com/) but I am not sure if other people in the project also need to do this so I just left the model out.
 
+This is the final information I will ever put in this blog :). Today is the last day of work all we did was look over the presentation and edit some things. Below I'll post the updated graphics I made. Adios hope you enjoyed reading through this blog.
+
+![](Endgame model code plan edited.png)
+
+![](DSPG project plan updated.png)
 
 
