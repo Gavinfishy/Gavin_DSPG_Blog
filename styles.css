@@ -1,1 +1,7 @@
 /* css styles */
+p {
+  font-size: 23px;
+}
+ul, ol {
+  font-size: 23px;
+}

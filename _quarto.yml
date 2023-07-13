@@ -23,7 +23,7 @@ website:
 
 format:
   html:
-    backgroundcolor: "#CAC7A7"
+    # backgroundcolor: "#CAC7A7"
     linkcolor: "#524727"
     
     css: styles.css
