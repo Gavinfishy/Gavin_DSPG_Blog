@@ -18,6 +18,6 @@ Gavin is from Bolingbrook Illinois, an upcoming Junior at Iowa State University 
 
 Undergrads: [Angelina](https://1angelinaevans.github.io/AngelinaEvansBlog/){target="_blank"}, [Kailyn](https://kailynhogan.github.io/Kailyn_Hogan_DSPG_Blog/){target="_blank"}
 
-Team leads: [Morenike](https://morenikeope.github.io/Atejioye_Blog/){target="_blank"}, Sadat
+Team leads: [Morenike](https://morenikeope.github.io/Atejioye_Blog/){target="_blank"}, [Sadat](https://github.com/ahnafsadat/sadat_DSPG){target="_blank"}
 
-[DSPG Blog](https://dspg-2023.github.io/DSPG2023/){target="_blank"}
+[DSPG Blog](https://dspg-2023.github.io/DSPG2023/){target="_blank"}, [DSPG Home Page](https://dspg.iastate.edu/){{target="_blank"}}
