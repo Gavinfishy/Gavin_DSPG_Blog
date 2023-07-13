@@ -1,5 +1,6 @@
 ---
 title: "Gavin's DSPG Blog"
+image: "isu_logo.ico"
 listing:
   contents: posts
   sort: "date desc"
