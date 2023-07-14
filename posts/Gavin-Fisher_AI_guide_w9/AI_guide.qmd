@@ -17,13 +17,16 @@ This will be a guide to a general idea of how AI works, which models we made, an
 
 First an intro to the general idea of how image classification artificial intelligence models work. Image classification models use deep learning to analyze and classify images into different categories. These models typically use convolutional neural networks, or CNNs, which are designed to handle visual data. Computers cannot see images the same way as us, they must look over images in multiple ways to understand them. A CNN can looks at neighborhoods of pixels to look at edges, textures, and corners to find common patterns in a set of images.
 
+![](pixels.png)
+
 ![](max_pool.png)
 
 CNNs consist of multiple different layers which make up the neural network. After constructing a network we are able to 'train' the model on images. Our team used supervised learning to train the models, this simply means that we had pre-sorted categories for the model to learn from. A common saying is in this area is 'garbage in, garbage out', meaning if you feed the model bad data it will preform poorly. Sorting images for training models is a long process but it is necessary so that we can have the best output possible.
 
+![Neural Network](neural_network.png)
+
 After a model is trained with data we can use it to predict which class new images are part of. For example if we train a model on images that have a picture of a house and images that have images of no house the model will predict whether a new image it has not seen before to have a house or to have no house.
 
-![Neural Network](neural_network.png)
 
 ## Training Images
 
@@ -33,13 +36,15 @@ Training images are the most important factor of how well a model will perform. 
 
 Overall the ratios of images are not too bad but the total numbers are bad. For every model the smallest number is the 'negative' attribute whether that is a damaged gutter or damaged roof etc. Early models built during this project used about 400 images in each category just to test how models work and they predicted somewhat decent. Having less than 200 images to train on was very problematic because with only training on a couple hundred images there is no way a model can correctly predict thousands of new images from this data. This has greatly affected the model accuracy for every model we built. Future DSPG AI Housing team members need to sort many more images to increase the accuracy of models created before they can be considered reliable.
 
+![](sorting_pics.png)
+
 ## Google Colab
 
-[Google Colab](https://colab.research.google.com/){target="_blank"} is an online Jupyter Notebooks Google service. The first pilot models built for this project was done on Jupyter Labs following these videos([Video 1](https://www.youtube.com/watch?v=19LQRx78QVU&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=1&ab_channel=NicholasRenotte){target="_blank"} [Video 2](https://www.youtube.com/watch?v=jztwpsIzEGc&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=2&ab_channel=NicholasRenotte){target="_blank"}). Google Colab serves the same purpose but is more user friendly to students not as familiar with code, as there is less to set up. Colab pairs with Google Drive so all data being used must be saved there first then exported if it is needed somewhere else.
+[Google Colab](https://colab.research.google.com/){target="_blank"} is an online Jupyter Notebooks Google service. The first pilot models built for this project was done on Jupyter Labs following these videos([Video 1](https://www.youtube.com/watch?v=19LQRx78QVU&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=1&ab_channel=NicholasRenotte){target="_blank"} [Video 2](https://www.youtube.com/watch?v=jztwpsIzEGc&list=PLgNJO2hghbmiXg5d4X8DURJP9yv9pgjIu&index=2&ab_channel=NicholasRenotte){target="_blank"}). Google Colab serves the same purpose but is more user friendly to students not as familiar with code, as there is less to set up. Colab pairs with Google Drive so all data being used must be saved there first then exported if it is needed somewhere else. Google Colab is where majority of our models were built.
 
-## Tensorflow Models
+## Image Classification Models Built With Tensorflow
 
-The first models we built used the Tensorflow and Keras libraries. If you are interested in seeing the program we wrote [navigate here](https://github.com/DSPG-2023/Housing/tree/main/models_algorithm){target="_blank"} and all of the model folders have ipynb files which can be opened in Google Colab. But a short recap, we used 70% of the data for testing, 20% for validation, and 10% for testing. The training data trains the model, the validation data validates that the model is training properly and not overfitting, and the testing data is used to test how well the model preforms after being trained. Next we can look at a sample of the data to see the different buckets that we sorted the images into.
+The first models we built used the Tensorflow and Keras libraries. If you are interested in seeing the program we wrote [navigate here](https://github.com/DSPG-2023/Housing/tree/main/models_algorithm){target="_blank"} and all of the model folders have ipynb files which can be opened in Google Colab. But a short recap, we used 70% of the data for training, 20% for validation, and 10% for testing. The training data trains the model, the validation data validates that the model is training properly and not overfitting, and the testing data is used to test how well the model preforms after being trained. Next we can look at a sample of the data to see the different buckets that we sorted the images into.
 
 ![](sample.png)
 
@@ -69,15 +74,17 @@ The third image shows another problem to watch out for once our model increases 
 
 Below is an image of how our program works as a whole.
 
+![](plan_new.png)
+
 The AI Housing team built seven models for evaluating addresses (more were made this is discussed later). We made three models for image quality testing, the house present model which checks if a house is present in the image, the clear image model which checks to see if the house is obstructed, and the multiple house model which checks if multiple houses are visible.
 
 The image quality models were made to eliminate bad images and select the best image to evaluate when given a few. Images with no houses or houses that can barely be seen due to obstruction should not be evaluated and if multiple images are available we want the image with only one house visible. After running through the first few models, if there are still multiple images remaining the program randomly selects one to evaluate.
 
 Next are the attribute models, which we currently have four, vegetation, siding, gutter, and roof. The vegetation model determines if there is no garden, a garden present, or overgrown weeds and bushes. The siding model determines if a house has good siding, chipped paint, or damaged siding such as panels missing or cracks. The gutter model determines if a house has good gutters or damaged gutters and the roof model determines if a house has a good roof or a damaged roof. Once all these attributes are predicted by the models we return them to a csv file joined on the address that was evaluated. We also keep track of the confidence percentage of each prediction which can be used for evaluation of the models confidence vs accuracy.
 
-## SHAP Models
+## Models Evaluated Using SHAP
 
-SHapley Additive exPlanations or SHAP is a method to explain predictions made by machine learning models. This roots from the [Shapley value](https://en.wikipedia.org/wiki/Shapley_value){target="_blank"}, which is a cooperative game theory that evaluates how important each player is for the overall cooperation and what payoff they can expect. This theory can be applied to machine learning models by looking at local accuracy, misingness, and consistency to determine what parts of input were most influential in the model making a prediction. Read more [here](https://towardsdatascience.com/deep-learning-model-interpretation-using-shap-a21786e91d16){target="_blank"}.
+SHapley Additive exPlanations or SHAP is a technique to explain predictions made by machine learning models. This roots from the [Shapley value](https://en.wikipedia.org/wiki/Shapley_value){target="_blank"}, which is a cooperative game theory that evaluates how important each player is for the overall cooperation and what payoff they can expect. This theory can be applied to machine learning models by looking at local accuracy, misingness, and consistency to determine what parts of input were most influential in the model making a prediction. Read more [here](https://towardsdatascience.com/deep-learning-model-interpretation-using-shap-a21786e91d16){target="_blank"}.
 
 The SHAP models were made in Google Colab using Tensorflow and keras just as the earlier models plus sklearn. As shown below the SHAP model is built with many more convolutional layers but as a result the loss is very low and the accuracy is very high. The following screenshots are from the house present SHAP model.
 
@@ -95,9 +102,9 @@ Next we show the SHAP images. What is interesting about these graphs is that the
 
 We have just simply gotten these models to run properly, they are not yet implemented into any other code. The SHAP models need to be compared to our first models to see if there are accuracy differences and if one network works better than the other. Additionally this can be implemented into our program to return a folder of images for each address evaluated so that we can get an idea of what type of images need to be added to the training data.
 
-## PyTorch and CAM Models
+## Models Made With PyTorch And Analyzed Using CAM
 
-Class Activation Mapping or CAM is another way of displaying why a model made a prediction. Similar to the SHAP method, CAM highlights important regions in an image that play a role in the models prediction making what looks like a heatmap. Read more [here](https://debuggercafe.com/basic-introduction-to-class-activation-maps-in-deep-learning-using-pytorch/){target="_blank"}.
+Class Activation Mapping or CAM is another way of displaying why a model made a prediction. Similar to the SHAP technique, CAM highlights important regions in an image that play a role in the models prediction making what looks like a heatmap. Read more [here](https://debuggercafe.com/basic-introduction-to-class-activation-maps-in-deep-learning-using-pytorch/){target="_blank"}.
 
 The first model we built for CAM used keras and ResNet50. To read more on ResNet go [here](https://www.geeksforgeeks.org/residual-networks-resnet-deep-learning/#){target="_blank"}. Residual Networks or ResNet are Deep Learning networks that basically allow skipping of convolutional layers if they harm the models accuracy. The first model also used ImageNet which is a dataset with millions of images used for training and evaluation computer vision models. So this model was a test of what was possible with using a prebuilt model and a large dataset. We randomly decided to choose panda images as a test to see how the program performed.
 
