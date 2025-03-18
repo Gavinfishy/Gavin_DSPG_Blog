@@ -10,7 +10,7 @@ website:
     right:
       - about.qmd
       - icon: linkedin
-        href: https://www.linkedin.com/in/gavin-fisher-0b3088238/
+        href: https://www.linkedin.com/in/gavin-d-fisher/
       - icon: github
         href: https://github.com/Gavinfishy
 #format:
